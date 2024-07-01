@@ -1,38 +1,160 @@
-.App {
-  text-align: center;
+@import "./fonts.scss";
+
+h1,
+h2,
+h3,
+h5,
+strong {
+	font-family: var(--saans_trial_regular);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+p,
+h6 {
+	font-family: var(--saans_trial_regular);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html,
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	-webkit-tap-highlight-color: transparent;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body.no-scroll {
+	position: fixed;
+	overflow: hidden;
+	height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+* {
+	box-sizing: border-box;
+	scrollbar-width: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+	border: none;
+	padding: 0;
+	margin: 0;
+	// font-family: var(--saans_trial_regular);
+	font-family: var(--saans_trial_medium);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	line-height: 1.1;
+}
+
+p + p {
+	margin: 0;
+}
+
+p,
+a,
+ul {
+	margin: 0;
+	padding: 0;
+	// font-size: 1rem;
+}
+
+ul {
+	list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+strong {
+	font-family: var(--saans_trial_medium);
+	// font-family: var(--saans_trial_bold);
+}
+
+p {
+	// font-family: var(--saans_trial_regular);
+	font-family: var(--saans_trial_medium);
+}
+
+body,
+input,
+textarea,
+select {
+	font-family: var(--saans_trial_medium), "Arial";
+	// font-size: 0.85rem;
+	font-weight: 400;
+	line-height: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+h1 {
+	font-size: 6rem;
+	line-height: 100%;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 4rem;
+	line-height: 100%;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 3rem;
+	line-height: 100%;
+	text-transform: uppercase;
+}
+
+h4 {
+	// font-size: 2.5rem;
+	// font-size: 2rem;
+	// font-size: 1.75rem;
+	font-size: 1.5rem;
+	line-height: 100%;
+	// text-transform: uppercase;
+	text-transform: capitalize;
+}
+
+h5 {
+	font-size: 0.9rem;
+	line-height: 100%;
+	// text-transform: uppercase;
+	text-transform: capitalize;
+}
+
+h6 {
+	font-size: 1rem;
+	line-height: 100%;
+}
+
+p {
+	// font-size: 1rem;
+	font-size: 1rem;
+	line-height: 140%;
 }
