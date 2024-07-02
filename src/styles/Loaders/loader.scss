@@ -1,0 +1,45 @@
+.loader {
+	background: #fff;
+	z-index: 9999;
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.logo_container {
+		position: relative;
+		width: 13rem;
+	}
+	.percentage {
+		margin-top: 3rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		pointer-events: none;
+		position: relative;
+		overflow: hidden;
+		border: solid 1px #2a6cce;
+		// border: solid 1px #000;
+		min-width: 5rem;
+		height: 2.25rem;
+		border-radius: 2.5rem;
+		.value {
+			position: relative;
+			z-index: 1;
+			transition: all ease-in-out 0.3s;
+			font-size: 0 0.9rem;
+			&.change_color {
+				color: #fff;
+			}
+		}
+		.revealer {
+			position: absolute;
+			top: -2px;
+			bottom: -2px;
+			left: 0px;
+			background-color: #2a6cce;
+		}
+	}
+}
