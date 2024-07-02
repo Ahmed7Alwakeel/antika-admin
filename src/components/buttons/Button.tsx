@@ -1,6 +1,6 @@
-import { ButtonProps } from "../../types/Interfaces";
+import { IButtonProps } from "../../types/Interfaces";
 
-const Button = ({ text, customClass, type, children, onClick, disabled, noScroll, loading } : ButtonProps) => {
+const Button = ({ text, customClass, type, children, onClick, disabled, noScroll, loading } : IButtonProps) => {
     return (
         <button
         className={`button_container ${customClass && customClass} ${disabled && 'disabled'} ${loading && "loading"}`}
