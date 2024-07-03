@@ -1,5 +1,7 @@
 import { ChangeEventHandler, FocusEventHandler, ReactNode, EventHandler, FocusEvent, FormEvent } from "react";
 import { TOptions } from "./types";
+import Select from "react-select/dist/declarations/src/Select";
+import { FormikProps } from "formik";
 
 //Buttons
 export interface IButtonProps {
@@ -13,8 +15,7 @@ export interface IButtonProps {
     children?: ReactNode;
   }
 
-  //Field Wrapper
-
+//Field Wrapper
 export interface IFieldWrapperProps {
     children?: ReactNode;
     title: string;
@@ -30,60 +31,41 @@ export interface IFieldWrapperProps {
     onChange?: (e: FormEvent<HTMLInputElement>) => void;
     onFocus?: (e: FormEvent<HTMLInputElement>) => void;
     onBlur?: (e: FormEvent<HTMLInputElement>) => void;
-    // Editor?: any;
-    // select?: any;
-    // expand?: any;
+    select?: boolean ;
     customClass?: string;
-    advanced?: boolean;
-    selectStyle?: string;
+    selectStyle?: object;
     type?: string;
-    single?: boolean;
-    halfWidth?: boolean;
-    
-    
- 
-    // onChange,
-    // onFocus,
-    // onBlur,
-    // Editor,
-    // select,
-    // expand,
-    // advanced,
-    // selectStyle,
-    // type,
-    // single,
-    // halfWidth,
-    // border,
-    // tooltip,
-    // tooltipTitle,
-    // tooltipHeader,
-    // tooltipText,
-    // radio,
-    // noPadding,
-    // tick,
-    // search,
-    // disabled,
-    // textArea,
-    // maxLength = 50,
-    // multi,
-    // date,
-    // textEditor,
-    // selectRef,
-    // multipleDates,
-    // range,
-    // minDate,
-    // maxDate,
-    // timePicker,
-    // value,
-    // controlledInput,
-    // noMinDate,
-    // formik,
-    // showMaxLengthHint,
-    // showUnit,
-    // unit,
-    // dateFormat,
-    // hideErrorIcon,
-    // clear,
-    // filterKeys
+    border?: boolean;
+    tooltipTitle?: boolean;
+    tooltip?: boolean;
+    tooltipHeader?: string;
+    tooltipText?: string;
+    noPadding?: boolean;
+    radio?: boolean;
+    tick?: boolean;
+    search?: boolean;
+    disabled?: boolean;
+    textArea?: boolean;
+    maxLength?: number;
+    multiple?: boolean;
+    multipleDates?: boolean;
+    date?: boolean;
+    textEditor?: boolean;
+    selectRef?: React.RefObject<Select> | null;
+    noMinDate?: boolean;
+    minDate?: string;
+    maxDate?: string;
+    timePicker?: boolean;
+    value?: string;
+    controlledInput?: boolean;
+    formik?: FormikProps<any>;
+    showMaxLengthHint?: boolean;
+    showUnit?: boolean;
+    unit?: string;
+    dateFormat?: string;
+    hideErrorIcon?: boolean;
+    clear?: boolean;
+    filterKeys?: Array<string>;
+   
 }
 
