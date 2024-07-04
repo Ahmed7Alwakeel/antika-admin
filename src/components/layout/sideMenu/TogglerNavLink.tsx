@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ActiveSideMenuAccordionContext } from "../../../store/context/activeSideMenuAccordionContext";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-const TogglerNavLink = ({ links, reAnimate }:any) => {
+const TogglerNavLink = ({ links, reAnimate,customClass }:any) => {
   const el = useRef<HTMLDivElement>(null);    
   const tl = useRef<gsap.core.Timeline>(gsap.timeline());
   const { activeSideMenuAccordion, setActiveSideMenuAccordion } = useContext(ActiveSideMenuAccordionContext);
@@ -17,7 +17,7 @@ const TogglerNavLink = ({ links, reAnimate }:any) => {
     let ctx=gsap.context(() => {
       tl.current = gsap.timeline({ paused: true });
       tl.current.fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items",
+        `.${customClass} .nav_links .toggler .collapsed_items`,
         { height: 0 },
         {
           height: "auto",
@@ -25,7 +25,7 @@ const TogglerNavLink = ({ links, reAnimate }:any) => {
           duration: 0.5,
         }
       )
-        .fromTo(".sidemenu_wrapper .nav_links .toggler .toggler_header .chevron",
+        .fromTo(`.${customClass} .nav_links .toggler .toggler_header .chevron`,
           {
             rotate: 0
           },
@@ -34,7 +34,7 @@ const TogglerNavLink = ({ links, reAnimate }:any) => {
           }, 0
         )
         .fromTo(
-          ".sidemenu_wrapper .nav_links .toggler .collapsed_items",
+          `.${customClass} .nav_links .toggler .collapsed_items`,
           { autoAlpha: 0 },
           {
             autoAlpha: 1,
@@ -82,12 +82,12 @@ const TogglerNavLink = ({ links, reAnimate }:any) => {
         <div className="inner">
           {links?.nestedLinks?.map((item:any, index:number) => (
             <li className={`item`} key={index}>
-              {/* <Link to={"/"}>
+              <Link to={"/"}>
                 {item?.icon &&
                   <div className="icon">{item?.icon}</div>
                 }
                 <span className="label">{item?.label}</span>
-              </Link> */}
+              </Link>
             </li>
           ))}
           <Link to={"/"}></Link>

@@ -1,13 +1,19 @@
 .initial-loader {
-	background: #fff;
 	z-index: 9999;
 	position: fixed;
 	inset: 0;
 	width: 100vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	padding: $padding_inline;
+	.loader-container{
+		display: flex;
+		background: $gray_bg;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border-radius: $border_radius;
+	}
 
 	.logo_container {
 		position: relative;

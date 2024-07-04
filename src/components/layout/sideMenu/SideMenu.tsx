@@ -147,7 +147,7 @@ const SideMenu = () => {
       </div>
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} />
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"sidemenu_wrapper"}/>
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>

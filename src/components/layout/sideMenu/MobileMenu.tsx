@@ -12,7 +12,7 @@ type NavLink = {
   icon?: JSX.Element;
 };
 
-const MobileMenu = () => {
+const MobileMenu = ({openMenu,setMenu}:any) => {
   const {pathname} = useLocation();
   const [expanded, setExpanded] = useState<boolean>(true);
   const [keepExpanded, setKeepExpanded] = useState<boolean>(true);
@@ -60,7 +60,7 @@ const MobileMenu = () => {
     tl2.current = gsap.timeline({ paused: true });
     tl2.current
       .fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
+        ".mobile-menu .nav_links .toggler .collapsed_items.expanded_items",
         { height: 0 },
         {
           height: "auto",
@@ -69,7 +69,7 @@ const MobileMenu = () => {
         }
       )
       .fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
+        ".mobile-menu .nav_links .toggler .collapsed_items.expanded_items",
         { autoAlpha: 0 },
         {
           autoAlpha: 1,
@@ -122,11 +122,8 @@ const MobileMenu = () => {
   }
 
   return (
-    <div className={`sidemenu_wrapper ${expanded && "expanded"} ${(pathname == "/auth/login" || pathname == "/auth/forgot-password") && "hide_sidebar"}`} ref={el}
-      onMouseEnter={() => { if (!keepExpanded) { tl.current.play(); setHover(true); setReAnimate(true) } }}
-      onMouseLeave={() => { if (!keepExpanded) { tl.current.reverse(); setHover(false); setReAnimate(false) } }}
-    >
-      <div className="logo_expand_container">
+    <div className={`mobile-menu ${openMenu? "open":"close"}`}>
+       <div className="logo_expand_container">
         <div className="logo_container">
           <div className="flag_label">
             {logo_flag_only}
@@ -137,8 +134,7 @@ const MobileMenu = () => {
         </div>
         <div className={`expand_btn label ${keepExpanded && "keep_expanded"}`}
           onClick={() => {
-            setExpanded(!expanded);
-            setKeepExpanded(!keepExpanded);
+            setMenu(false)
           }}
         >
           {sideMenuOpenIcon}
@@ -147,7 +143,7 @@ const MobileMenu = () => {
       </div>
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} />
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>
