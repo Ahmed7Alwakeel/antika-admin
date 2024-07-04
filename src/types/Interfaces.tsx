@@ -5,7 +5,7 @@ import { FormikProps } from "formik";
 
 //Buttons
 export interface IButtonProps {
-    text: string;
+    text?: string;
     customClass?: string;
     type?: "button" | "submit" | "reset" | undefined;
     onClick?: () => void;
@@ -18,7 +18,7 @@ export interface IButtonProps {
 //Input Fields
 export interface IFieldWrapperProps {
     children?: ReactNode;
-    title: string;
+    title?: string;
     desc?: string;
     inputError?: string;
     inputTouched?: boolean;
