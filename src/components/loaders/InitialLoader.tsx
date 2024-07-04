@@ -3,8 +3,6 @@ import gsap from "gsap";
 import { useEffect, useRef } from "react";
 
 const InitialLoader = () => {
-    
-
     const tl = useRef<gsap.core.Timeline | null>(null);
     useEffect(() => {
         let loader: HTMLElement | null = document.getElementById('loader');
@@ -28,8 +26,8 @@ const InitialLoader = () => {
     }, [])
     
     return (
-        <div className="loader" id="loader">
-           <div className="new-loader"></div>
+        <div className="initial-loader" id="loader">
+           <div className="spinner-loader"></div>
 		</div>
     );
 }

@@ -12,7 +12,7 @@ type NavLink = {
   icon?: JSX.Element;
 };
 
-const SideMenu = () => {
+const MobileMenu = () => {
   const {pathname} = useLocation();
   const [expanded, setExpanded] = useState<boolean>(true);
   const [keepExpanded, setKeepExpanded] = useState<boolean>(true);
@@ -155,4 +155,4 @@ const SideMenu = () => {
 
 };
 
-export default SideMenu;
+export default MobileMenu;
