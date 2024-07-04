@@ -15,7 +15,7 @@ export interface IButtonProps {
     children?: ReactNode;
   }
 
-//Field Wrapper
+//Input Fields
 export interface IFieldWrapperProps {
     children?: ReactNode;
     title: string;
@@ -66,6 +66,27 @@ export interface IFieldWrapperProps {
     hideErrorIcon?: boolean;
     clear?: boolean;
     filterKeys?: Array<string>;
+    multi?: boolean;
    
 }
 
+export interface IMultiDatePickerFieldProps {
+    name:string
+    label?:string
+    onChange?: (e: FormEvent) => void
+    value?:string
+    minDate?:string
+    maxDate?:string
+    disabled?: boolean
+    dateFormat?: string
+}
+
+export interface ITextEditorFieldProps {
+    name:string
+    className?:string
+}
+
+export interface ITimePickerFieldProps {
+    name:string
+    disabled?:boolean
+}
