@@ -13,7 +13,7 @@ export interface IButtonProps {
     noScroll?: boolean;
     loading?: boolean;
     children?: ReactNode;
-  }
+}
 
 //Input Fields
 export interface IFieldWrapperProps {
@@ -31,7 +31,7 @@ export interface IFieldWrapperProps {
     onChange?: (e: FormEvent<HTMLInputElement>) => void;
     onFocus?: (e: FormEvent<HTMLInputElement>) => void;
     onBlur?: (e: FormEvent<HTMLInputElement>) => void;
-    select?: boolean ;
+    select?: boolean;
     customClass?: string;
     selectStyle?: object;
     type?: string;
@@ -67,26 +67,46 @@ export interface IFieldWrapperProps {
     clear?: boolean;
     filterKeys?: Array<string>;
     multi?: boolean;
-   
+
 }
 
 export interface IMultiDatePickerFieldProps {
-    name:string
-    label?:string
+    name: string
+    label?: string
     onChange?: (e: FormEvent) => void
-    value?:string
-    minDate?:string
-    maxDate?:string
+    value?: string
+    minDate?: string
+    maxDate?: string
     disabled?: boolean
     dateFormat?: string
 }
 
 export interface ITextEditorFieldProps {
-    name:string
-    className?:string
+    name: string
+    className?: string
 }
 
 export interface ITimePickerFieldProps {
-    name:string
-    disabled?:boolean
+    name: string
+    disabled?: boolean
+}
+
+export interface IAdminDataDropDown {
+    dropDownToggler: boolean
+}
+interface IMenuLinks {
+    header: string,
+    headerIcon: JSX.Element[],
+    baseRoute:string
+    nestedLinks: 
+        {
+            label: string,
+            link: string,
+            icon: JSX.Element[],
+        }[]
+}
+export interface ITogglerNavLink {
+    links: IMenuLinks,
+    reAnimate: boolean,
+    customClass: string
 }

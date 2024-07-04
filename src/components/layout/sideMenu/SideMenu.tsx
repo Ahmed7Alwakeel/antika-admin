@@ -114,7 +114,6 @@ const SideMenu = () => {
       },
       {
         label: "Articles",
-        // baseRoute: "/tournaments",
         link: "/articles",
         icon: [ArticlesIcons],
       }

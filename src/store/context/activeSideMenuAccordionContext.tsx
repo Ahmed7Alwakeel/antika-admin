@@ -2,8 +2,8 @@ import React, { createContext, useState } from "react";
 
 // Define types for context values
 interface ActiveSideMenuAccordionContextProps {
-	activeSideMenuAccordion: number;
-	setActiveSideMenuAccordion: React.Dispatch<React.SetStateAction<number>>;
+	activeSideMenuAccordion: number|string;
+	setActiveSideMenuAccordion: React.Dispatch<React.SetStateAction<number|string>>;
 }
 interface prop {
 	children: React.ReactNode;
@@ -16,7 +16,7 @@ export const ActiveSideMenuAccordionContext = createContext<ActiveSideMenuAccord
 
 const ActiveSideMenuAccordionContextProvider: React.FC<prop> = (props) => {
 	// State for active accordion index
-	const [activeSideMenuAccordion, setActiveSideMenuAccordion] = useState<number>(-1);
+	const [activeSideMenuAccordion, setActiveSideMenuAccordion] = useState<number|string>(-1);
 
 	return (
 		<ActiveSideMenuAccordionContext.Provider value={{

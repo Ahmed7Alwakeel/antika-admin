@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 interface IBreadCrumbs {
-	links: [
-		{
-			label: string
-			path: string
-		}
-	]
+	links: {
+		label: string
+		path: string
+	}[]
 	page_title: string
 }
 interface BreadCrumbsState {

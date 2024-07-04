@@ -3,7 +3,8 @@ import gsap from "gsap";
 import { ActiveSideMenuAccordionContext } from "../../../store/context/activeSideMenuAccordionContext";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-const TogglerNavLink = ({ links, reAnimate,customClass }:any) => {
+import { ITogglerNavLink } from "../../../types/Interfaces";
+const TogglerNavLink = ({ links, reAnimate,customClass }:ITogglerNavLink) => {
   const el = useRef<HTMLDivElement>(null);    
   const tl = useRef<gsap.core.Timeline>(gsap.timeline());
   const { activeSideMenuAccordion, setActiveSideMenuAccordion } = useContext(ActiveSideMenuAccordionContext);

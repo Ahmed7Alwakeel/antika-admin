@@ -2,8 +2,9 @@
 import Cookies from "js-cookie";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { IAdminDataDropDown } from "../../types/Interfaces";
 
-const AdminDataDropDown = ({ dropDownToggler, loading, userData }:any) => {
+const AdminDataDropDown = ({ dropDownToggler }:IAdminDataDropDown) => {
     // const router = useRouter();
     // const { setBreadcrumbsData } = useContext(breadcrumbsContext);
     // const { setCurrentUserType, setUserToken } = useContext(authContext);
@@ -30,7 +31,7 @@ const AdminDataDropDown = ({ dropDownToggler, loading, userData }:any) => {
                     </svg>
                 </div>
                 <div className="header">
-                    <h6>{userData && userData?.name}</h6>
+                    {/* <h6>{userData && userData?.name}</h6> */}
                 </div>
             </div>
             <div className="drop-header titles">

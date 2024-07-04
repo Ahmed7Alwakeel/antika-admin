@@ -144,6 +144,24 @@ const MobileMenu = ({openMenu,setMenu}:any) => {
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
           <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/><TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>

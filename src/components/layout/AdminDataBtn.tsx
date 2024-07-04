@@ -28,7 +28,7 @@ const AdminDataBtn = () => {
         }
     }
 
-    const [userData, setUserData] = useState();
+    // const [userData, setUserData] = useState();
     const [userInitials, setUserInitials] = useState();
 
     // useEffect(() => {
@@ -47,7 +47,7 @@ const AdminDataBtn = () => {
                 <span className="user_name">{userInitials}</span>
                 <div className="active_icon"></div>
             </div>
-            <AdminDataDropDown dropDownToggler={dropDownToggler} userData={userData} />
+            <AdminDataDropDown dropDownToggler={dropDownToggler} />
         </div>
     );
 }
