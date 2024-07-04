@@ -1,0 +1,33 @@
+.breadcrumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    .links {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        .link {
+            text-transform: capitalize;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: #000;
+            cursor: pointer;
+            &.dimmed {
+                color: rgba($color: #000, $alpha: 0.7);
+                cursor: unset;
+            }
+            &:last-child {
+                .chevron {
+                    display: none;
+                }
+            }
+        }
+    }
+    .page_title {
+        font-size: 1.25rem;
+    }
+}
