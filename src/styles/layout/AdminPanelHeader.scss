@@ -172,7 +172,14 @@
 			}
 
 			.hz-line {
-				display: none;
+				display: flex;
+				height: 2rem;
+				width: 2px;
+				background-color: rgba($color: #000, $alpha: 0.5);
+				margin: auto;
+			}
+			.lang{
+				cursor: pointer;
 			}
 		}
 	}
@@ -207,13 +214,5 @@
 				width: 70%;
 			}
 		}
-	}
-
-	.hz-line {
-		display: flex !important;
-		height: 2rem;
-		width: 2px;
-		background-color: rgba($color: #000, $alpha: 0.5);
-		margin: auto;
 	}
 }

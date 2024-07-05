@@ -2,12 +2,10 @@ import { ReactNode } from "react";
 import InitialLoader from "../loaders/InitialLoader";
 import AdminPanelHeader from "./AdminPanelHeader";
 import SideMenu from "./sideMenu/SideMenu";
-import { useTranslation } from "react-i18next";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-    const { i18n } = useTranslation ();
     return (
-        <main className="layout layout-with-loader" dir={`${i18n.language=="ar"?"rtl":"ltr"}`}>
+        <main className="layout layout-with-loader">
             <InitialLoader />
             <div className="layout_inner">
                 <SideMenu />

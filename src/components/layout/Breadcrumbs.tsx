@@ -1,9 +1,12 @@
 
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 
 const Breadcrumbs = () => {
+    
+    const { t } = useTranslation()
     const breadcrumbsData = useSelector((store: any) => store.breadCrumbsData.breadCrumbsData);
 
     return (
@@ -29,7 +32,7 @@ const Breadcrumbs = () => {
                     </div>
                 ))}
             </div>
-            <h4 className="page_title">{breadcrumbsData?.page_title}</h4>
+            <h4 className="page_title">{t("home")}</h4>
         </div>
     );
 }

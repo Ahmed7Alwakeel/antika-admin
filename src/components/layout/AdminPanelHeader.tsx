@@ -1,14 +1,16 @@
 
-import { full_logo } from "../../config/variables";
+import { full_logo, Lang_Icon } from "../../config/variables";
 import { useLocation } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 import AdminDataBtn from "./AdminDataBtn";
 import { useState } from "react";
 import MobileMenu from "./sideMenu/MobileMenu";
+import { useTranslation } from "react-i18next";
 
 const AdminPanelHeader = () => {
   const { pathname } = useLocation();
   const [openMenu, setMenu] = useState<boolean>(false)
+  const { i18n } = useTranslation()
 
   return (
     <>
@@ -28,13 +30,16 @@ const AdminPanelHeader = () => {
                 <span></span>
                 <span></span>
               </div>
+              <div className="lang" onClick={() => i18n.language === "ar" ? i18n.changeLanguage("en") : i18n.changeLanguage("ar")}>
+                {Lang_Icon}
+              </div>
               <div className="hz-line"></div>
               <AdminDataBtn />
             </div>
           </div>
         }
       </div>
-      <MobileMenu openMenu={openMenu} setMenu={setMenu}/>
+      <MobileMenu openMenu={openMenu} setMenu={setMenu} />
     </>
   );
 }

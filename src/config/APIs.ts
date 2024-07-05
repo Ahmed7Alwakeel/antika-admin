@@ -1,1 +1,1 @@
-export const API_URL = "https://dev.financing.mynm.beyond-creation.net/api";
+export const API_URL = process.env.REACT_APP_API_URL;

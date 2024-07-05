@@ -1,0 +1,8 @@
+:lang(ar) {
+    @import "./layout/AdminPanelHeader-rtl.scss";
+     
+    direction: rtl;
+    svg{
+        transform: scaleX(-1) !important;
+    }
+}
