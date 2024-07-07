@@ -102,7 +102,6 @@ const LoginForm = () => {
                                     tick
                                     customClass={'password-input'}
                                 />
-                                <span className="forget" onClick={() => { navigate('/auth/forgot-password') }}>Forgot Password?</span>
                                 <div className="form_button double"> 
                                     <Button>
                                         <span className="bold">Login</span>
