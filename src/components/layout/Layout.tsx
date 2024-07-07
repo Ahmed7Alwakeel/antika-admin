@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Layout = ({ children }: { children: ReactNode }) => {
     const navigate = useNavigate();
+	const pathName = window.location.pathname;
 
     useEffect(() => {
 		if ( !Cookies.get('token')) {
@@ -20,8 +21,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
             <div className="layout_inner">
                 <SideMenu />
                 <div className={`layout_wrapper`}>
-					<div className={`layout_content `}>
-							<AdminPanelHeader />
+					<div className={`layout_content ${(pathName == ("/auth/login") ) ? "login_layout" : ""}`}>
+							{/* <AdminPanelHeader /> */}
 						<div className="content_container">
 							{children}
 						</div>

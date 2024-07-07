@@ -1,0 +1,13 @@
+.sign_text_container {
+	width: 35%;
+	flex-shrink: 0;
+	p {
+		opacity: 0.5;
+		margin-top: 1rem;
+	}
+	p {
+		&.description-content {
+			white-space: pre-line;
+		}
+	}
+}

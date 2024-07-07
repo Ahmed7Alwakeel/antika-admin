@@ -8,6 +8,11 @@
 @import "./layout/AdminPanelHeader.scss";
 @import "./layout/Breadcrumbs.scss";
 @import "./layout/MobileMenu.scss";
+@import "../styles/formInputs/generalFormStyles.scss";
+
+//Login
+@import "../modules/auth/styles/login.scss";
+@import "../modules/auth/styles/textContainer.scss";
 
 :root {
 	--saans-trial-regular: "PlusJakartaSans-Light", sans-serif;
@@ -174,8 +179,8 @@ p {
 	line-height: 140%;
 }
 
-@media(min-width: 1500px) {
-	html{
-		font-size: 18px;
+@media (min-width: 1500px) {
+	html {
+		// font-size: 18px;
 	}
 }
