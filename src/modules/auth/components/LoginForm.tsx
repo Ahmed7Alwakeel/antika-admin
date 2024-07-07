@@ -8,8 +8,8 @@ import Button from "../../../components/buttons/Button";
 import { useNavigate } from "react-router-dom";
 import TextContainer from './TextContainer';
 import { authContext } from '../../../store/context/authContext';
-import { loginPostRequest } from '../utils/LoginRequest';
 import { IUserData } from '../types/Interfaces';
+import { loginPostRequest } from '../API/api';
 
 
 const LoginForm = () => {

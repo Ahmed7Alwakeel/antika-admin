@@ -1,4 +1,4 @@
-import { axiosInstance } from "../../../utils/GeneralRequests";
+import { axiosInstance } from "../../../config/axiosConfig";
 
 interface ILoginRequestProps {
     route: string;
