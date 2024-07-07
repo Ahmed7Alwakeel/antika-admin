@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 import TextContainer from './TextContainer';
 import { authContext } from '../../../store/context/authContext';
 import { IUserData } from '../types/Interfaces';
-import { loginPostRequest } from '../API/api';
+import { loginPostRequest } from '../api/api';
+
 
 
 const LoginForm = () => {
