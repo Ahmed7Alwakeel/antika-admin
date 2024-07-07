@@ -2,19 +2,9 @@ import { ReactNode, useEffect } from "react";
 import InitialLoader from "../loaders/InitialLoader";
 import AdminPanelHeader from "./AdminPanelHeader";
 import SideMenu from "./sideMenu/SideMenu";
-import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-    const navigate = useNavigate();
 	const pathName = window.location.pathname;
-
-    useEffect(() => {
-		if ( !Cookies.get('token')) {
-            navigate('/auth/login')
-        }
-		
-	}, []);
     return (
         <main className="layout layout-with-loader">
             <InitialLoader />
@@ -22,7 +12,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 <SideMenu />
                 <div className={`layout_wrapper`}>
 					<div className={`layout_content ${(pathName == ("/auth/login") ) ? "login_layout" : ""}`}>
-							{/* <AdminPanelHeader /> */}
+							{!pathName.includes("/auth/")&&<AdminPanelHeader />}
 						<div className="content_container">
 							{children}
 						</div>

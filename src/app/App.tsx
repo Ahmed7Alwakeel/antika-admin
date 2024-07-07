@@ -6,9 +6,10 @@ import Providers from './Providers';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Login from './pages/auth/Login';
-import Home from './Home';
 import ProtectedRoutes from '../utils/ProtectedRoutes';
 import ProtectedAuth from '../utils/ProtectedAuth';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -26,12 +27,13 @@ const App: React.FC = () => {
           <Routes>
             <Route path='/' element={<ProtectedRoutes />}>
               <Route path="/" element={<Home />} />
-              <Route path="*" element={<div>not found</div>} />
+              <Route path="/not-found" element={<NotFound/>} /> 
             </Route>
             <Route element={<ProtectedAuth />}>
               <Route path="/auth/login" element={<Login />} />
               <Route path="/auth/forget-password" element={<Login />} />
             </Route>
+              <Route path="*" element={<Navigate to="/not-found" replace />} /> 
           </Routes>
         </Layout>
       </Providers>
