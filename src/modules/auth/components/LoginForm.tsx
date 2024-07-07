@@ -23,7 +23,7 @@ const LoginForm = () => {
             .required('required')
             .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please remove spaces'),
         password: Yup.string().required('required')
-        // .matches(/^[^ ]\S*/, "Please remove spaces").min(8, "The password must be at least 8 characters."),
+        .matches(/^[^ ]\S*/, "Please remove spaces").min(8, "The password must be at least 8 characters."),
     });
 
     return (
@@ -52,27 +52,7 @@ const LoginForm = () => {
                                 setUserData as (userData: IUserData) => void;
                                 setUserToken as (userToken: string) => void;
                                 navigate('/');
-                            } 
-                            // 1- for UAEPA moderator
-                            // else if (res?.success && res?.data?.token && res?.data?.user?.user_type === "moderator") {
-                            //     Cookies.set('token', res?.data?.token);
-                            //     Cookies.set('user_data', JSON.stringify(res?.data?.user));
-                            //     Cookies.set('user_type', "moderator");
-                            //     setCurrentUserType("moderator");
-                            //     setUserData(res?.data?.user);
-                            //     setUserToken(res?.data?.token);
-                            //     navigate('/tournaments');
-                            // }
-                            // // 2- for club moderator
-                            // else if (res?.success && res?.data?.token && res?.data?.user?.user_type === "club_moderator") {
-                            //     Cookies.set('token', res?.data?.token);
-                            //     Cookies.set('user_data', JSON.stringify(res?.data?.user));
-                            //     Cookies.set('user_type', "club_moderator");
-                            //     setCurrentUserType("club_moderator");
-                            //     setUserData(res?.data?.user);
-                            //     setUserToken(res?.data?.token);
-                            //     navigate('/tournaments');
-                            // }
+                            }
                             else if (res?.errors?.credentials) {
                                 toast.error("invalid credentials")
                             } else {
