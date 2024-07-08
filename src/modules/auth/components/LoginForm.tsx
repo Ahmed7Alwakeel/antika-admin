@@ -23,7 +23,6 @@ const LoginForm = () => {
             .required('required')
             .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please remove spaces'),
         password: Yup.string().required('required')
-        .matches(/^[^ ]\S*/, "Please remove spaces").min(8, "The password must be at least 8 characters."),
     });
 
     return (
@@ -40,25 +39,23 @@ const LoginForm = () => {
                     }}
                     onSubmit={(values) => {
                         setLoading(true)
-                        loginPostRequest({ route: "/auth/login", values: values }).then((res) => {
-                            setLoading(false)
-                            // console.log(res?.data, "rere")
-                            // 0- For admin
-                            if (res?.success && res?.data?.token && res?.data?.user?.roles[0] === "super-admin") {
-                                Cookies.set('token', res?.data?.token);
-                                Cookies.set('user_data', JSON.stringify(res?.data?.user));
-                                Cookies.set('user_type', "super-admin");
-                                (setCurrentUserType as (userType: string) => void)("super-admin");
-                                setUserData as (userData: IUserData) => void;
-                                setUserToken as (userToken: string) => void;
-                                navigate('/');
-                            }
-                            else if (res?.errors?.credentials) {
-                                toast.error("invalid credentials")
-                            } else {
-                                toast.error("Something went wrong, please try again.")
-                            }
-                        })
+
+                            loginPostRequest({ route: "/auth/login", values: values }).then((res) => {
+                                setLoading(false)
+                                // 0- For admin
+                                if (res?.status=="Success" && res?.data?.token && res?.data?.user?.role == "admin") {
+                                    Cookies.set('token', res?.data?.token);
+                                    Cookies.set('user_data', JSON.stringify(res?.data?.user));
+                                    Cookies.set('user_type', "admin");
+                                    // (setCurrentUserType as (userType: string) => void)("super-admin");
+                                    // setUserData as (userData: IUserData) => void;
+                                    // setUserToken as (userToken: string) => void;
+                                    navigate('/');
+                                    }else{
+                                        setLoading(false)
+                                    }
+                            })
+            
                     }}
                 >
                     {(formik) => (
@@ -83,7 +80,7 @@ const LoginForm = () => {
                                     customClass={'password-input'}
                                 />
                                 <div className="form_button double"> 
-                                    <Button loading={loading}>
+                                    <Button loading={loading} type='submit'>
                                         <span className="bold">Login</span>
                                     </Button>
                                 </div>
