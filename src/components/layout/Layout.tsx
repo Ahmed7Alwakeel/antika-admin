@@ -3,6 +3,8 @@ import InitialLoader from "../loaders/InitialLoader";
 import AdminPanelHeader from "./AdminPanelHeader";
 import SideMenu from "./sideMenu/SideMenu";
 import { useLocation } from "react-router-dom";
+import { Slide, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = ({ children }: { children: ReactNode }) => {
 
@@ -13,6 +15,13 @@ const Layout = ({ children }: { children: ReactNode }) => {
             <InitialLoader />
             <div className="layout_inner">
                 <SideMenu />
+                <ToastContainer
+						autoClose= {2000}
+						draggable={false}
+						hideProgressBar={true} 
+						position='top-right'
+						transition={Slide}
+					/>
                 <div className={`layout_wrapper`}>
                     <div className={`layout_content ${pathname.includes("/auth/") ? "login_layout" : ""}`}>
                         {!pathname.includes("/auth/") && <AdminPanelHeader />}

@@ -83,7 +83,7 @@ const LoginForm = () => {
                                     customClass={'password-input'}
                                 />
                                 <div className="form_button double"> 
-                                    <Button>
+                                    <Button loading={loading}>
                                         <span className="bold">Login</span>
                                     </Button>
                                 </div>
