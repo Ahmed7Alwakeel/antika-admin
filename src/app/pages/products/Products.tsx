@@ -34,7 +34,7 @@ const Products = () => {
     useEffect(() => {
         const reqData = data?.data.data.data
         if (isSuccess) {
-            const sortedCategories = reqData.sort((a: any, b: any) => a.published - b.published).sort((a: any, b: any) => {
+            const sortedCategories = reqData.sort((a: any, b: any) => b.published - a.published).sort((a: any, b: any) => {
                 const dateA = new Date(b.createdAt).getTime();
                 const dateB = new Date(a.createdAt).getTime();
                 return dateB + dateA; // Sort in descending order
