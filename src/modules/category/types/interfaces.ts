@@ -4,6 +4,7 @@ export interface ICategoryImage{
 		name: string,
 }
 export interface ICategory {
+	id?:string,
 	slug?:string,
 	name: string
 	description: string

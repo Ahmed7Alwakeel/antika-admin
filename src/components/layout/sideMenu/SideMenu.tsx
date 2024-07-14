@@ -4,7 +4,7 @@ import { sideMenuOpenIcon, AboutIcon, ArticlesIcons, CategoriesIcon, ClubRegistr
 import ActiveSideMenuAccordionContextProvider from "../../../store/context/activeSideMenuAccordionContext";
 import TogglerNavLink from "./TogglerNavLink";
 import { useLocation } from "react-router-dom";
-import { websiteLinks } from "../../../config/menuLinks";
+import { categoryLinks, productLinks } from "../../../config/menuLinks";
 
 const SideMenu = () => {
   const {pathname} = useLocation();
@@ -13,8 +13,9 @@ const SideMenu = () => {
   const [hover, setHover] = useState<boolean>(false);
   const el = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(gsap.timeline());
-  const tl2 = useRef<gsap.core.Timeline>(gsap.timeline());
+  
   const [reAnimate, setReAnimate] = useState<boolean>(false);
+
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -50,30 +51,8 @@ const SideMenu = () => {
     };
   }, []);
 
-  useEffect(() => {
-    tl2.current = gsap.timeline({ paused: true });
-    tl2.current
-      .fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
-        { height: 0 },
-        {
-          height: "auto",
-          ease: "power3.inOut",
-          duration: 0.35,
-        }
-      )
-      .fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
-        { autoAlpha: 0 },
-        {
-          autoAlpha: 1,
-          ease: "power3.inOut",
-          duration: 0.3,
-        },
-        0.15
-      );
-    reAnimate ? tl2.current?.play() : tl2.current?.reverse();
-  }, [reAnimate]);
+
+
 
   return (
     <div className={`sidemenu_wrapper ${expanded && "expanded"} ${(pathname == "/auth/login" || pathname == "/auth/forgot-password") && "hide_sidebar"}`} ref={el}
@@ -98,7 +77,8 @@ const SideMenu = () => {
       </div>
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"sidemenu_wrapper"}/>
+          <TogglerNavLink links={categoryLinks} reAnimate={reAnimate} customClass={"sidemenu_wrapper"}/>
+          <TogglerNavLink links={productLinks} />
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>

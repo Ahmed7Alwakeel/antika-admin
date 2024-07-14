@@ -8,6 +8,7 @@ const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavL
   const { pathname } = useLocation()
   const el = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(gsap.timeline());
+  const tl2 = useRef<gsap.core.Timeline>(gsap.timeline());
   const { activeSideMenuAccordion, setActiveSideMenuAccordion } = useContext(ActiveSideMenuAccordionContext);
 
   const handleToggle = () => {
@@ -60,16 +61,37 @@ const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavL
 
 
   useEffect(() => {
-    activeSideMenuAccordion === links?.header ? tl.current?.play() : tl.current?.reverse();
-  }, [activeSideMenuAccordion]);
+    tl2.current = gsap.timeline({ paused: true });
+    tl2.current
+      .fromTo(
+        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
+        { height: 0 },
+        {
+          height: "auto",
+          ease: "power3.inOut",
+          duration: 0.35,
+        }
+      )
+      .fromTo(
+        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
+        { autoAlpha: 0 },
+        {
+          autoAlpha: 1,
+          ease: "power3.inOut",
+          duration: 0.3,
+        },
+        0.15
+      );
+    reAnimate ? tl2.current?.play() : tl2.current?.reverse();
+  }, [reAnimate]);
 
-  // // reinvoke the toggler timeline on sidebar collapse or expansion
-  // useEffect(() => {
-  //   // (activeSideMenuAccordion === links?.header || activeSideMenuAccordion != -1) && reAnimate ? tl.current?.play() : tl.current?.reverse();
-  //   console.log(activeSideMenuAccordion, "activeSideMenuAccordion")
-  // }, [reAnimate, activeSideMenuAccordion])
+
+
+  useEffect(() => {
+    activeSideMenuAccordion === links?.header ? tl.current?.play() : tl.current?.reverse();
+  }, [activeSideMenuAccordion,links]);
+
   const isActive = links?.nestedLinks?.some(item => pathname === item?.link);
-  // const isActive = links?.nestedLinks?.some(item => pathname?.includes(item?.link));
 
   return (
     <div className={`toggler`} ref={el}>

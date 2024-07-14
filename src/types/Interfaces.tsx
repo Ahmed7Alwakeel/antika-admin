@@ -2,6 +2,7 @@ import { ChangeEventHandler, FocusEventHandler, ReactNode, EventHandler, FocusEv
 import { TOptions } from "./types";
 import Select from "react-select/dist/declarations/src/Select";
 import { FormikProps } from "formik";
+import { ActionMeta, OnChangeValue } from "react-select";
 
 export interface IFormHeader {
     children?: ReactNode,
@@ -49,11 +50,11 @@ export interface IFieldWrapperProps {
     inputTouched?: boolean;
     inputName?: string;
     inputPlaceholder?: string;
-    defaultValue?: string;
+    defaultValue?: TOptions;
     customPadding?: boolean;
     options?: Array<TOptions>;
     input?: boolean;
-    onChange?: (e: FormEvent<HTMLInputElement>) => void;
+    onChange?: (newValue: OnChangeValue<TOptions, boolean>) => void;
     onFocus?: (e: FormEvent<HTMLInputElement>) => void;
     onBlur?: (e: FormEvent<HTMLInputElement>) => void;
     select?: boolean;
@@ -132,7 +133,7 @@ interface IMenuLinks {
 }
 export interface ITogglerNavLink {
     links: IMenuLinks,
-    reAnimate: boolean,
-    customClass: string,
+    reAnimate?: boolean,
+    customClass?: string,
     setMenu?: (e: boolean) => void
 }

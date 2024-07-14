@@ -185,10 +185,10 @@ const FieldWrapper = (
               className={`input-field ${inputError && inputTouched && "input-error"
                 }`}
               maxLength="255"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                onChange && onChange(e);
-                formik && formik.setFieldValue(inputName || "defaultName", e?.target?.value)
-              }}
+              // onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              //   onChange && onChange(e);
+              //   formik && formik.setFieldValue(inputName || "defaultName", e?.target?.value)
+              // }}
               disabled={disabled}
             />
             {!inputError && tick && (
@@ -263,12 +263,11 @@ const FieldWrapper = (
               classNamePrefix="react-select"
               styles={selectStyle}
               defaultValue={defaultValue}
-              onChange={() => onChange}
+              onChange={onChange}
               onFocus={onFocus}
               onBlur={onBlur}
               isDisabled={disabled}
-              ref={selectRef}
-              value={value}
+              // ref={selectRef}
               filterOption={(option, inputValue) => {
                 if (inputValue.trim().length == 0) return true;
 

@@ -1,6 +1,6 @@
 import { serviceIcon } from "./variables";
 
-export const websiteLinks = {
+export const categoryLinks = {
     header: "Categories",
     baseRoute: "/categories",
     headerIcon: [serviceIcon],
@@ -10,6 +10,20 @@ export const websiteLinks = {
       },
       {
         label: "Create Category", link: "/categories/create-category", icon: [serviceIcon],
+      },
+    ]
+  }
+
+  export const productLinks = {
+    header: "Products",
+    baseRoute: "/products",
+    headerIcon: [serviceIcon],
+    nestedLinks: [
+      {
+        label: "Products", link: "/products", icon: [serviceIcon],
+      },
+      {
+        label: "Create Product", link: "/products/create-product", icon: [serviceIcon],
       },
     ]
   }

@@ -3,8 +3,7 @@ import gsap from "gsap";
 import { sideMenuOpenIcon, AboutIcon, ArticlesIcons, CategoriesIcon, ClubRegistrationIcons, ClubsListIcon, ContactLinksIcon, ContactUsIcon, ContactUsListIcon, CourtsIcon, NOCRegistrationIcons, NewsIcon, NewsletterListIcon, PlayersIcon, PlayersListIcon, SponsorsIcon, TeamsListIcon, TermsAndCondIcon, TournamentIcon, TournamentRequestsIcon, TournamentsIcon, UsersIcon, homeIcon, logo_flag_only, logo_label_only, settingsIcon, websiteIcon, CreateTournamentsIcon, ListTournamentsIcon, CalenderTournamentsIcon, Terms_Conditions } from "../../../config/variables";
 import ActiveSideMenuAccordionContextProvider from "../../../store/context/activeSideMenuAccordionContext";
 import TogglerNavLink from "./TogglerNavLink";
-import { useLocation } from "react-router-dom";
-import { websiteLinks } from "../../../config/menuLinks";
+import { categoryLinks, productLinks } from "../../../config/menuLinks";
 
 
 type NavLink = {
@@ -102,7 +101,8 @@ const MobileMenu = ({openMenu,setMenu}:any) => {
       </div>
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu}/>
+          <TogglerNavLink links={categoryLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu}/>
+          <TogglerNavLink links={productLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu}/>
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>
