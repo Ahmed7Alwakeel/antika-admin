@@ -11,6 +11,7 @@
     transition: .5s all;
     transform: translateX(100%);
 	overflow-y: scroll;
+	z-index: 10;
     &.open{
         transform: translateX(0);
         display: block;

@@ -1,6 +1,5 @@
 import { useField, useFormikContext } from "formik";
 import moment from "moment";
-import { FormEvent, useState } from "react";
 import DatePicker, { DateObject } from "react-multi-date-picker";
 import { IMultiDatePickerFieldProps } from "../../types/Interfaces";
 export const MultipleDatePickerField = ({ ...props } : IMultiDatePickerFieldProps) => {
@@ -9,11 +8,6 @@ export const MultipleDatePickerField = ({ ...props } : IMultiDatePickerFieldProp
 
   const [field] = useField(props);
 
-  // useEffect(() => {
-  //   console.log(props?.formik.values.match_dates, "zooo")
-  // }, [props.formik])
-  // console.log(props.minDate, props.maxDate, "mini")
-  // console.log(field.value, "voll")
   return (
     <div className="date-input">
       <DatePicker
@@ -29,15 +23,12 @@ export const MultipleDatePickerField = ({ ...props } : IMultiDatePickerFieldProp
         maxDate={props.maxDate && moment(props.maxDate).format("DD-MM-YYYY")}
         placeholder="DD-MM-YYYY"
         format="DD-MM-YYYY"
-        // selected={(field.value && new Date(field.value) ) || null}
         
         onChange={(values) => {
             if(values != null) {
 
                 setFieldValue(field.name,
                   values.map((date) => date.format("DD-MM-YYYY")))
-                  // console.log(field.value, "sallo")
-                //   setTest(field.value && new Date(field.value))
             }
         }}
         disabled={props?.disabled}

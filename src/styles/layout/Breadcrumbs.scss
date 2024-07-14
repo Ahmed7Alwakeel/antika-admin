@@ -31,3 +31,10 @@
         font-size: 1.25rem;
     }
 }
+@media(max-width:1024px){
+    .breadcrumbs{
+        .links{
+            display: none;
+        }
+    }
+}

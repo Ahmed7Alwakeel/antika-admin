@@ -2,5 +2,27 @@
     "home" : "home",
     "about" : "about",
     "contact" : "contact",
-    "login" : "login"
+    "login" : "login",
+    "id":"ID",
+    "name":"Name",
+    "address":"Address",
+    "limit":"Limit ( SAR )",
+    "pending_payments":"Pending Payments",
+    "status":"status",
+    "actions":"actions",
+    "search_by_id_Name":"Search by ID or Name",
+    "dashboard":"dashboard",
+    "service_providers":"service providers",
+    "create_service":"create service provider",
+    "first_name":"First Name",
+    "last_name":"Last Name",
+    "profession":"Profession",
+    "create_contacts":"Create Contact",
+    "contacts":"Contacts",
+    "users":"Users",
+    "create_users":"Create User",
+    "No_contacts_found":"No contacts found",
+    "No_users_found":"No users found",
+    "No_services_found":"No services found"
+    
 }

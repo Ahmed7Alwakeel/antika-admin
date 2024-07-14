@@ -1,0 +1,111 @@
+.drag-image-container {
+  width: 100%;
+  height: 18.5rem;
+  background: rgba(33, 29, 51, 0.03);
+  border: 1px dashed rgba(33, 29, 51, 0.3);
+  border-radius: 12px;
+  gap: 0.25rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: 0.15s all;
+  .drag-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  &.drag-error-container {
+    border: 1px dashed red;
+  }
+  .types {
+    opacity: 0.4;
+  }
+  &.images-added {
+    border: none;
+    background-color: transparent;
+    cursor: unset;
+    height: unset;
+    &.build-form {
+      position: relative;
+      background: rgba(33, 29, 51, 0.03);
+      border: 1px dashed rgba(33, 29, 51, 0.3);
+      height: 18.5rem;
+      .images-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .img-container {
+          position: relative;
+          width: 80%;
+          height: 80%;
+          overflow: hidden;
+          border: unset;
+          img {
+            object-fit: contain;
+          }
+        }
+      }
+      .edit-icon {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        cursor: pointer;
+      }
+    }
+    .drag-wrapper {
+      align-items: flex-start;
+      margin-top: 1rem;
+      width: fit-content;
+    }
+    .images-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      .img-container {
+        border: 1px dashed rgba(33, 29, 51, 0.3);
+        background: rgba(33, 29, 51, 0.03);
+        border-radius: 12px;
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+		.img-container-with-title{
+			display: flex;
+			gap:1.5rem;
+			align-items: center;
+		}
+        img {
+          position: relative;
+          width:100%;
+          height: 100%;
+          border-radius: 4px;
+          overflow: hidden;
+          object-fit: contain;
+        }
+
+        div {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.drag-error {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 1rem;
+  color: red;
+  z-index: 2;
+  font-size: 0.85rem;
+  &.builder {
+    bottom: 1rem;
+  }
+}

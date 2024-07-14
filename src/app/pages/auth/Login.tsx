@@ -12,7 +12,7 @@ const Login = () => {
             {/* </div> */}
         </div>
         <div className="img-wrapper">
-             <img src="/images/padel3.jpg" alt="logo" />
+             <img src="/images/login.jpg" alt="logo" />
         </div>
     </div>
     );

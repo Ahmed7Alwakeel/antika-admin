@@ -2,20 +2,21 @@
 import gsap from "gsap";
 import { ActiveSideMenuAccordionContext } from "../../../store/context/activeSideMenuAccordionContext";
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ITogglerNavLink } from "../../../types/Interfaces";
-const TogglerNavLink = ({ links, reAnimate,customClass }:ITogglerNavLink) => {
-  const el = useRef<HTMLDivElement>(null);    
+const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavLink) => {
+  const { pathname } = useLocation()
+  const el = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(gsap.timeline());
   const { activeSideMenuAccordion, setActiveSideMenuAccordion } = useContext(ActiveSideMenuAccordionContext);
-  
+
   const handleToggle = () => {
     setActiveSideMenuAccordion(activeSideMenuAccordion == links?.header ? -1 : links?.header);
 
   };
 
   useEffect(() => {
-    let ctx=gsap.context(() => {
+    let ctx = gsap.context(() => {
       tl.current = gsap.timeline({ paused: true });
       tl.current.fromTo(
         `.${customClass} .nav_links .toggler .collapsed_items`,
@@ -51,11 +52,11 @@ const TogglerNavLink = ({ links, reAnimate,customClass }:ITogglerNavLink) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   if(links.nestedLinks.some(ele => pathname == ele?.link)){
-  //     setActiveSideMenuAccordion(links?.header)
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (links.nestedLinks.some(ele => pathname == ele?.link)) {
+      setActiveSideMenuAccordion(links?.header)
+    }
+  }, [])
 
 
   useEffect(() => {
@@ -67,12 +68,12 @@ const TogglerNavLink = ({ links, reAnimate,customClass }:ITogglerNavLink) => {
   //   // (activeSideMenuAccordion === links?.header || activeSideMenuAccordion != -1) && reAnimate ? tl.current?.play() : tl.current?.reverse();
   //   console.log(activeSideMenuAccordion, "activeSideMenuAccordion")
   // }, [reAnimate, activeSideMenuAccordion])
-  // const isActive = links?.nestedLinks?.some(item => pathname === item?.link);
+  const isActive = links?.nestedLinks?.some(item => pathname === item?.link);
   // const isActive = links?.nestedLinks?.some(item => pathname?.includes(item?.link));
 
   return (
     <div className={`toggler`} ref={el}>
-      <div className={`toggler_header  `} onClick={() => {
+      <div className={`toggler_header ${(isActive) && "active"} ${(activeSideMenuAccordion === links?.header && !isActive) && "just_expanded_header"}`} onClick={() => {
         handleToggle()
       }} >
         {links?.headerIcon}
@@ -81,9 +82,12 @@ const TogglerNavLink = ({ links, reAnimate,customClass }:ITogglerNavLink) => {
       </div>
       <ul className={`collapsed_items ${activeSideMenuAccordion === links?.header && "expanded_items"}`}>
         <div className="inner">
-          {links?.nestedLinks?.map((item:any, index:number) => (
-            <li className={`item`} key={index}>
-              <Link to={"/"}>
+          {links?.nestedLinks?.map((item: any, index: number) => (
+            <li className={`item`} key={index} onClick={() => {
+              setMenu && setMenu(false)
+              setActiveSideMenuAccordion(-1)
+            }}>
+              <Link to={item.link}>
                 {item?.icon &&
                   <div className="icon">{item?.icon}</div>
                 }

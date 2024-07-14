@@ -20,16 +20,7 @@ export interface IUserData {
 }
     
 export interface IAuthContextValues {
-    userToken?: string | null;
-    setUserToken?: (userToken: string | null) => void;
-    // setUserToken?: React.Dispatch<React.SetStateAction<string | null>>;
-    userData?: IUserData;  
-    setUserData?: React.Dispatch<React.SetStateAction<IUserData>>;
-    // setUserData?: React.Dispatch<React.SetStateAction<IUserData>>;
-    setCurrentUserType?: (currentUserType: string | null) => void;
-    // setCurrentUserType?: React.Dispatch<React.SetStateAction<string | null>>
-    handleUnAuthenticated?: (route : string) => void
-    currentUserType?: string | null;
+    handleLogout: () => void
 }
 
 

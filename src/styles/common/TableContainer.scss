@@ -1,0 +1,643 @@
+.table-wrapper{
+  border-bottom: $border;
+  padding-bottom: 2rem;
+  &:last-child{
+    padding-bottom: 0rem;
+    border: none;
+  }
+}
+.table_container {
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.7) $gray_bg;
+  .table_header {
+    white-space: nowrap;
+    // display: flex;
+    display: table;
+    width: 100%;
+    padding: 1rem;
+    border-bottom: $border;
+    .head {
+      text-transform: capitalize;
+      // width: 15rem;
+      width: 13rem;
+      padding-inline-end: 2rem;
+      font-size: 0.75rem;
+      color: rgba(33, 29, 51, 0.4);
+      flex-shrink: 0;
+      display: inline-block;
+      // text-align: center;
+      &.longHead{
+        width: 20rem;
+      }
+      &.head-buttons{
+        flex-shrink: 1;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+      &.selected_col {
+        width: 4rem;
+        text-align: center;
+        padding-inline-end: 0;
+        .selection_icon {
+          width: 1.25rem;
+          height: 1.25rem;
+          border: solid 1px #e5e5e5;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      }
+    }
+  }
+  .table_data {
+    display: table;
+    width: 100%;
+    &.no_data {
+      padding: 2rem 1rem;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      &:not(:last-child) {
+        border-bottom: $border;
+      }
+      height: 3rem;
+      padding-inline: 1rem;
+      &.has_logo{
+        height: 4rem;
+      }
+      &:hover {
+        background-color: $gray_bg;
+      }
+      &.clickable {
+        cursor: pointer;
+      }
+      &.selected {
+        background-color: #f5f5f5;
+        .column {
+          &.selected_col {
+            .selection_icon {
+              border-color: rgba($color: #000000, $alpha: 0.6);
+            }
+          }
+        }
+      }
+      .column {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-inline-end: 2rem;
+        // width: 15rem;
+        width: 13rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0;
+        &.longHead{
+          width: 20rem;
+        }
+        &.logo{
+          padding-top:1.5rem ;
+          padding-bottom:1.5rem ;
+          div{
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+            img{
+              position: absolute;
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+          &.selected_col {
+            width: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-inline-end: 0;
+            .selection_icon {
+              width: 1.25rem;
+              height: 1.25rem;
+              border: $border;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all ease-in-out 0.25s;
+              &:hover {
+                border-color: rgba($color: #000000, $alpha: 0.6);
+              }
+          }
+          }
+        .table-button {
+          color: white;
+          padding: 0.65rem 1.5rem;
+        }
+        &.capitalize {
+          text-transform: capitalize;
+        }
+
+        &.actions {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.75rem;
+          .action_btn {
+              cursor: pointer;
+              svg:not([fill=none]) {
+                path {
+                  fill: rgba($color: #000000, $alpha: .85);
+                }
+              }
+              &:hover {
+                svg:not([fill=none]) {
+                  path {
+                    fill: #000;
+                  }
+                }
+              }
+          }
+        }
+      }
+      .column-buttons{
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        justify-content: flex-end;
+        flex-shrink: 1;
+      }
+    }
+  }
+
+  // Custom classes for columns
+  // This is BULLSHIT, but it's a QC requirement
+  .table_header .head,
+  .table_data .item .column { 
+    &.id_col {
+      width: 5rem;
+    }
+    &.categories_col {
+      width: 10rem;
+    }
+    &.sponsor_col {
+      width: 10rem;
+    }
+    &.date_col {
+      width: 11rem;
+    }
+    &.prize_col {
+      width: 7rem;
+      text-align: center;
+      padding-inline-end: 0;
+    }
+    &.text-center{
+      text-align: center;
+      padding-inline-end: 0;
+    }
+    &.status_col {
+      // width: 7rem;
+      text-align: center;
+      padding-inline-end: 0;
+      div{
+        width: 5rem;
+        height: 1.5rem;
+        background-color: red;
+        margin: auto;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        &.active{
+          background-color: rgb(46, 188, 46);
+        }
+      }
+    }
+    &.actions_col {
+      width: 7rem;
+      text-align: center;
+      padding-inline-end: 0;
+    }
+  }
+
+
+  &.registered_teams_table {
+    .paginator {
+      .inner_paginator {
+        right: 2.5rem;
+      }
+    }
+    .change_team_status_modal{
+      .modal{
+        width: 30%;
+      }
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        width: 2rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.team_id_col {
+        width: 7rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.total_points_col {
+        width: 5rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.player2_col, 
+      &.player1_col {
+        width: 15rem;
+      }
+      &.qualification_status_col {
+        width: 10rem;
+        text-align: center;
+        padding-inline-end: 0;
+        .inner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          .action_btn {
+            cursor: pointer
+          }
+        }
+      }
+      &.registration_date_col {
+        width: 11rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 4rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+    }
+  }
+
+  &.players_list_table {
+    .table_header,
+    .table_data .item  {
+        // padding-inline: 0;
+        padding-inline-end: 0;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.mobile_col {
+        width: 11rem;
+      }
+      &.gender_col {
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.age_col, &.rank_col, &.level_col, &.points_col, &.position_col {
+        width: 5rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 6rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.teams_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        width: 3rem;
+      }
+      &.category_col {
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.player1_col, &.player2_col {
+        width: 18rem;
+      }
+      &.points_col, &.winner_col {
+        width: 7rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.tournaments_played_col {
+        width: 10rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 4rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.sponsors_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 4rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.club_list_table {
+    .table_header,
+    .table_data .item {
+      // padding-inline: 0;
+      // padding-inline-end: 0;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.membership_id_col {
+        width: 9rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.number_of_courts_col {
+        width: 10rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.booking_fee_col {
+        width: 9rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.membership_status_col {
+        width: 13rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 5rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.noc_list_table {
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        width: 4rem;
+      }
+      &.contact_number_col {
+        width: 8rem;
+      }
+      &.number_of_courts_indoor_col,
+      &.number_of_courts_outdoor_col {
+        width: 12rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.status_col {
+        width: 10rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 4rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+  }
+  }
+
+  &.contact_us_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.actions_col {
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.users_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        width: 4rem;
+      }
+      &.email_col {
+        width: 16rem;
+      }
+      &.actions_col {
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.articles_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.id_col {
+        width: 4rem;
+      }
+      &.actions_col {
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.tournaments_points_table {
+    .table_header {
+      display: flex;
+    }
+    .table_data .item,
+    .table_header {
+        padding-inline-end: 0;
+      }
+    .table_header .head,
+    .table_data .item .column{
+      &.points_col{
+        width: 8rem;
+        text-align: center;
+        padding-inline-end: 0;
+        }
+        &.date_col{
+          width: 8rem;
+          padding-inline-end: 0;
+        }
+        &.rank_col{
+          width: 5rem;
+          text-align: center;
+          padding-inline-end: 0;
+        }
+        &.name_col{
+          width: 14rem;
+          padding-inline-end: 0;
+        }
+        &.round_col {
+          width: 8rem;
+          text-align: center;
+          padding-inline-end: 0;
+          margin-inline-start: auto;
+        }
+    }
+    &.insideTeamPage {
+      .table_header .head,
+    .table_data .item .column{
+      &.date_col{
+        width: 14rem;
+        padding-inline-end: 0;
+      }
+      &.points_col{
+        width: 7rem;
+        text-align: center;
+        padding-inline-end: 0;
+        }
+    }
+    }
+  }
+
+  &.categories_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.name_col {
+        width: 10rem;
+      }
+      &.gender_col,
+      &.min_age_col, 
+      &.max_age_col {
+          width: 7rem; 
+          text-align: center;
+          padding-inline-end: 0;
+      }
+      &.actions_col {
+        width: 5rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+
+  &.teams_popup_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.selected_col {
+        width: 4rem;
+      }
+      &.id_col {
+        width: 6rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.team_id_col {
+        width: 7rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.total_points_col {
+        width: 6rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+      &.qualification_status_col {
+        width: 9rem;
+        text-align: center;
+        padding-inline-end: 0;
+      }
+    }
+  }
+
+  &.news_letter_list_table {
+    .table_header {
+      display: flex;
+    }
+    .table_header .head,
+    .table_data .item .column {
+      &.email_col {
+        width: 16rem;
+      }
+      &.actions_col {
+        width: 4rem;
+        text-align: center;
+        padding-inline-end: 0;
+        margin-inline-start: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .table_container {
+    .table_header, .table_data .item {
+      .head, .column {
+        &:nth-child(1) {
+          width: 7rem;
+        }
+        &:last-child {
+          width: 8rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.section_header {
+    padding-bottom: 1.563rem;
+    // margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    h4 {
+        font-size: 1.15rem;
+    }
+    &.section-title {
+        border-top: solid 1px #e5e5e5;
+        padding-top: 3rem;
+        margin-top: 3rem;
+    }
+    &.un_capitalize {
+        h4 {
+            text-transform: none;
+        }
+    }
+    &.df {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .is_partner {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            p {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

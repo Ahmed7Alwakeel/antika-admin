@@ -31,7 +31,7 @@ const AdminPanelHeader = () => {
                 <span></span>
               </div>
               <div className="lang" onClick={() => i18n.language === "ar" ? i18n.changeLanguage("en") : i18n.changeLanguage("ar")}>
-                {Lang_Icon}
+               <span>{i18n.language=="en"?"عربي":"EN"}</span>{Lang_Icon}
               </div>
               <div className="hz-line"></div>
               <AdminDataBtn />

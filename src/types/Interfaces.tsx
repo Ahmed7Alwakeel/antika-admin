@@ -3,6 +3,30 @@ import { TOptions } from "./types";
 import Select from "react-select/dist/declarations/src/Select";
 import { FormikProps } from "formik";
 
+export interface IFormHeader {
+    children?: ReactNode,
+    title: string,
+    customStyle?: string
+}
+
+export interface IFormUpload {
+    setShownImage?: any,
+    shownImage?: string
+    errors?: string
+    formik?: any
+    name?: string
+    touched?: boolean
+}
+export interface IChildren {
+    children: ReactNode
+}
+
+export interface ITableSkeleton {
+    columns: number,
+    withSelectFilter?: boolean,
+    withoutButton?: boolean,
+    withoutHeader?: boolean,
+}
 //Buttons
 export interface IButtonProps {
     text?: string;
@@ -17,6 +41,7 @@ export interface IButtonProps {
 
 //Input Fields
 export interface IFieldWrapperProps {
+    dir?: string
     children?: ReactNode;
     title?: string;
     desc?: string;
@@ -97,16 +122,17 @@ export interface IAdminDataDropDown {
 interface IMenuLinks {
     header: string,
     headerIcon: JSX.Element[],
-    baseRoute:string
-    nestedLinks: 
-        {
-            label: string,
-            link: string,
-            icon: JSX.Element[],
-        }[]
+    baseRoute: string
+    nestedLinks:
+    {
+        label: string,
+        link: string,
+        icon: JSX.Element[],
+    }[]
 }
 export interface ITogglerNavLink {
     links: IMenuLinks,
     reAnimate: boolean,
-    customClass: string
+    customClass: string,
+    setMenu?: (e: boolean) => void
 }

@@ -2,7 +2,9 @@
 @import "./variables.scss";
 @import "./buttons/button.scss";
 @import "./formInputs/fieldWrapper.scss";
-@import "./layout/loaders/InitialLoader.scss";
+@import "./loaders/InitialLoader.scss";
+@import "./loaders/Skeleton.scss";
+@import "./loaders/BasicInfoSkeleton.scss";
 @import "./layout/SideMenu.scss";
 @import "./layout/Layout.scss";
 @import "./layout/AdminPanelHeader.scss";
@@ -10,6 +12,15 @@
 @import "./layout/MobileMenu.scss";
 @import "../styles/formInputs/generalFormStyles.scss";
 @import "../styles/layout/Toastify.scss";
+@import "../styles/common/TableContainer.scss";
+@import "../styles/common/ModalContainer.scss";
+@import "../styles/common/ListHeader.scss";
+@import "../styles/common/SearchInputField.scss";
+@import "../styles/common/InputFieldsGeneralStyles.scss";
+@import "../styles/common/SectionHeader.scss";
+@import "../styles/common/DragDropWrapper.scss";
+@import "../modules/category/styles/ServiceProviderHighlights.scss";
+@import "../modules/category/styles/ServiceProviderInfo.scss";
 
 //Login
 @import "../modules/auth/styles/login.scss";

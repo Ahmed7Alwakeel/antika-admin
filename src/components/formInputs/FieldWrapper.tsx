@@ -6,7 +6,7 @@ import { TextEditorField } from "./TextEditorField";
 import { TimePickerField } from "./TimePickerField";
 import { IFieldWrapperProps } from "../../types/Interfaces";
 
-const FieldWrapper = (  
+const FieldWrapper = (
   {
     children,
     title,
@@ -56,14 +56,13 @@ const FieldWrapper = (
     dateFormat,
     hideErrorIcon,
     clear,
-    filterKeys
-  } : IFieldWrapperProps,
+    filterKeys,
+    dir
+  }: IFieldWrapperProps,
   ref: React.Ref<HTMLDivElement>
 ) => {
 
   const length = value?.length || 0;
-
-  // console.log(value, length, inputName, "vooo")
 
   const [remainingCharachters, setRemainingCharachters] = useState(maxLength - length || maxLength);
 
@@ -132,7 +131,7 @@ const FieldWrapper = (
       )}
       {input && (
         <div className="input_wrapper">
-          <div className="field">
+          <div className="field" dir={dir}>
             <Field
               type={type && type}
               placeholder={inputPlaceholder}
@@ -166,9 +165,9 @@ const FieldWrapper = (
               <p className="max_length_hint">{remainingCharachters} / {maxLength} characters left</p>
             }
             <p className="error">
-              <ErrorMessage name={inputName || "defaultName"} />   
+              <ErrorMessage name={inputName || "defaultName"} />
             </p>
-            {inputError && inputTouched && !hideErrorIcon &&
+            {inputError && inputTouched && !hideErrorIcon && dir != "rtl" &&
               <div className="error-icon">
                 !
               </div>
@@ -287,7 +286,7 @@ const FieldWrapper = (
           </div>
         </div>
       )}
- 
+
       {timePicker && (
         <div className="input_wrapper">
           {/* <div className="field"> */}

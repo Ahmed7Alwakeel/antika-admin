@@ -32,7 +32,7 @@ const Breadcrumbs = () => {
                     </div>
                 ))}
             </div>
-            <h4 className="page_title">{t("home")}</h4>
+            <h4 className="page_title">{breadcrumbsData.page_title}</h4>
         </div>
     );
 }

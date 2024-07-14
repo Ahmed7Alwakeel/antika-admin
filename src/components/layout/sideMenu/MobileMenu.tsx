@@ -4,6 +4,7 @@ import { sideMenuOpenIcon, AboutIcon, ArticlesIcons, CategoriesIcon, ClubRegistr
 import ActiveSideMenuAccordionContextProvider from "../../../store/context/activeSideMenuAccordionContext";
 import TogglerNavLink from "./TogglerNavLink";
 import { useLocation } from "react-router-dom";
+import { websiteLinks } from "../../../config/menuLinks";
 
 
 type NavLink = {
@@ -13,8 +14,6 @@ type NavLink = {
 };
 
 const MobileMenu = ({openMenu,setMenu}:any) => {
-  const {pathname} = useLocation();
-  const [expanded, setExpanded] = useState<boolean>(true);
   const [keepExpanded, setKeepExpanded] = useState<boolean>(true);
   const [hover, setHover] = useState<boolean>(false);
   const el = useRef<HTMLDivElement>(null);
@@ -81,46 +80,6 @@ const MobileMenu = ({openMenu,setMenu}:any) => {
     reAnimate ? tl2.current?.play() : tl2.current?.reverse();
   }, [reAnimate]);
 
-  const websiteLinks = {
-    header: "Website",
-    baseRoute: "/website",
-    headerIcon: [websiteIcon],
-    nestedLinks: [
-      {
-        label: "Home", link: "/website/home", icon: [homeIcon],
-      },
-      {
-        label: "Tournaments", link: "/website/tournaments", icon: [TournamentsIcon]
-      },
-      {
-        label: "Players", link: "/website/players", icon: [PlayersIcon]
-      },
-      { label: "About us", link: "/website/about-us", icon: [AboutIcon] },
-      { label: "Contact us", link: "/website/contact-us", icon: [ContactUsIcon] },
-      {
-        label: "Courts", link: "/website/courts", icon: [CourtsIcon]
-      },
-      {
-        label: "News", link: "/website/news", icon: [NewsIcon]
-      },
-      {
-        label: "Tournament Registration", link: "/website/tournament-section", icon: [TournamentIcon]
-      },
-      {
-        label: "Club Registration", link: "/website/club-registration", icon: [ClubRegistrationIcons]
-      },
-      {
-        label: "NOC Registration", link: "/website/noc-registration", icon: [NOCRegistrationIcons]
-      },
-      {
-        label: "Articles",
-        // baseRoute: "/tournaments",
-        link: "/articles",
-        icon: [ArticlesIcons],
-      }
-    ]
-  }
-
   return (
     <div className={`mobile-menu ${openMenu? "open":"close"}`}>
        <div className="logo_expand_container">
@@ -143,25 +102,7 @@ const MobileMenu = ({openMenu,setMenu}:any) => {
       </div>
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/><TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
-          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"}/>
+          <TogglerNavLink links={websiteLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu}/>
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>

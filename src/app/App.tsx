@@ -8,8 +8,10 @@ import { useTranslation } from 'react-i18next';
 import Login from './pages/auth/Login';
 import ProtectedRoutes from '../utils/ProtectedRoutes';
 import ProtectedAuth from '../utils/ProtectedAuth';
-import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
+import Categories from './pages/categories/Categories';
+import CreateCategory from './pages/categories/CreateCategory';
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -26,14 +28,18 @@ const App: React.FC = () => {
         <Layout>
           <Routes>
             <Route path='/' element={<ProtectedRoutes />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/not-found" element={<NotFound/>} /> 
+              <Route path="/" element={<Navigate to="/dashboard" />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/categories/create-category" element={<CreateCategory />} />
+              <Route path="/categories/create-category/:id" element={<CreateCategory />} />
+              <Route path="/not-found" element={<NotFound />} />
             </Route>
             <Route element={<ProtectedAuth />}>
               <Route path="/auth/login" element={<Login />} />
               <Route path="/auth/forget-password" element={<Login />} />
             </Route>
-              <Route path="*" element={<Navigate to="/not-found" replace />} /> 
+            <Route path="*" element={<Navigate to="/not-found" replace />} />
           </Routes>
         </Layout>
       </Providers>
