@@ -1,4 +1,4 @@
-import { serviceIcon } from "./variables";
+import { serviceIcon, UsersIcon } from "./variables";
 
 export const categoryLinks = {
     header: "Categories",
@@ -31,7 +31,7 @@ export const categoryLinks = {
   export const usersLinks = {
     header: "Users",
     baseRoute: "/users",
-    headerIcon: [serviceIcon],
+    headerIcon: [UsersIcon],
 
     nestedLinks: { label: "Users List", link: "/users" }
   }
