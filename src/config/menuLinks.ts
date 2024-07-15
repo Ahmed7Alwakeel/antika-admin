@@ -27,3 +27,11 @@ export const categoryLinks = {
       },
     ]
   }
+
+  export const usersLinks = {
+    header: "Users",
+    baseRoute: "/users",
+    headerIcon: [serviceIcon],
+
+    nestedLinks: { label: "Users List", link: "/users" }
+  }

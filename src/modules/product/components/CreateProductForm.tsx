@@ -228,7 +228,6 @@ const CreateProductForm = () => {
                                     customPadding
                                     title={"Category"}
                                     inputPlaceholder="Category"
-                                    tooltipTitle
                                     inputName={"category"}
                                     inputError={formik.errors.category}
                                     inputTouched={formik.touched.category}

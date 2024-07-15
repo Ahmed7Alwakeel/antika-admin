@@ -14,6 +14,7 @@ import Categories from './pages/categories/Categories';
 import CreateCategory from './pages/categories/CreateCategory';
 import Products from './pages/products/Products';
 import CreateProduct from './pages/products/CreateProduct';
+import Users from './pages/Users';
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -38,6 +39,7 @@ const App: React.FC = () => {
               <Route path="/products" element={<Products />} />
               <Route path="/products/create-product" element={<CreateProduct />} />
               <Route path="/products/create-product/:id" element={<CreateProduct />} />
+              <Route path="/users" element={<Users />} />
               <Route path="/not-found" element={<NotFound />} />
             </Route>
             <Route element={<ProtectedAuth />}>

@@ -4,23 +4,32 @@ import { ActiveSideMenuAccordionContext } from "../../../store/context/activeSid
 import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ITogglerNavLink } from "../../../types/Interfaces";
+import useGsapContext from "../../../store/context/useGsapContext";
 const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavLink) => {
   const { pathname } = useLocation()
   const el = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(gsap.timeline());
-  const tl2 = useRef<gsap.core.Timeline>(gsap.timeline());
+  const ctx = useGsapContext(el);
   const { activeSideMenuAccordion, setActiveSideMenuAccordion } = useContext(ActiveSideMenuAccordionContext);
 
   const handleToggle = () => {
-    setActiveSideMenuAccordion(activeSideMenuAccordion == links?.header ? -1 : links?.header);
-
+    setActiveSideMenuAccordion(activeSideMenuAccordion === links?.header ? -1 : links?.header);
+    
   };
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    
+    console.log(activeSideMenuAccordion , "activeSideMenuAccordion");
+
+    
+  }, [activeSideMenuAccordion])
+  
+
+  useEffect(() => {
+   ctx.add(() => {
       tl.current = gsap.timeline({ paused: true });
       tl.current.fromTo(
-        `.${customClass} .nav_links .toggler .collapsed_items`,
+        `.sidemenu_wrapper .nav_links .toggler .collapsed_items`,
         { height: 0 },
         {
           height: "auto",
@@ -28,7 +37,7 @@ const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavL
           duration: 0.5,
         }
       )
-        .fromTo(`.${customClass} .nav_links .toggler .toggler_header .chevron`,
+        .fromTo(`.sidemenu_wrapper .nav_links .toggler .toggler_header .chevron`,
           {
             rotate: 0
           },
@@ -37,7 +46,7 @@ const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavL
           }, 0
         )
         .fromTo(
-          `.${customClass} .nav_links .toggler .collapsed_items`,
+          `.sidemenu_wrapper .nav_links .toggler .collapsed_items`,
           { autoAlpha: 0 },
           {
             autoAlpha: 1,
@@ -54,44 +63,25 @@ const TogglerNavLink = ({ links, reAnimate, customClass, setMenu }: ITogglerNavL
   }, []);
 
   useEffect(() => {
-    if (links.nestedLinks.some(ele => pathname == ele?.link)) {
+    if (links.nestedLinks.some(ele => pathname === ele?.link)) {
       setActiveSideMenuAccordion(links?.header)
     }
   }, [])
-
-
+  
+  
   useEffect(() => {
-    tl2.current = gsap.timeline({ paused: true });
-    tl2.current
-      .fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
-        { height: 0 },
-        {
-          height: "auto",
-          ease: "power3.inOut",
-          duration: 0.35,
-        }
-      )
-      .fromTo(
-        ".sidemenu_wrapper .nav_links .toggler .collapsed_items.expanded_items",
-        { autoAlpha: 0 },
-        {
-          autoAlpha: 1,
-          ease: "power3.inOut",
-          duration: 0.3,
-        },
-        0.15
-      );
-    reAnimate ? tl2.current?.play() : tl2.current?.reverse();
-  }, [reAnimate]);
-
-
-
-  useEffect(() => {
+    // activeSideMenuAccordion == links?.header ? tl.current?.play() : tl.current?.reverse();
     activeSideMenuAccordion === links?.header ? tl.current?.play() : tl.current?.reverse();
-  }, [activeSideMenuAccordion,links]);
+    console.log(activeSideMenuAccordion == links?.header, "links?.header");
+  }, [activeSideMenuAccordion]);
 
+  // // reinvoke the toggler timeline on sidebar collapse or expansion
+  // useEffect(() => {
+  //   // (activeSideMenuAccordion === links?.header || activeSideMenuAccordion != -1) && reAnimate ? tl.current?.play() : tl.current?.reverse();
+  //   console.log(activeSideMenuAccordion, "activeSideMenuAccordion")
+  // }, [reAnimate, activeSideMenuAccordion])
   const isActive = links?.nestedLinks?.some(item => pathname === item?.link);
+  // const isActive = links?.nestedLinks?.some(item => pathname?.includes(item?.link));
 
   return (
     <div className={`toggler`} ref={el}>

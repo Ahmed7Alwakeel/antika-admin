@@ -1,45 +1,44 @@
 import { useDispatch } from "react-redux";
-import { setBreadCrumbsData } from "../../../store/redux/breadCrumbsData";
 import { useEffect, useState, useTransition } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { generalGet } from "../../../API/api";
-import TableSkeleton from "../../../components/loaders/TableSkeleton";
-import ListHeader from "../../../components/ListHeader";
-import SearchInputField from "../../../components/SearchInputField";
-import { searchFilterLogic } from "../../../utils/HelperFunctions";
+import { generalGet } from "../../API/api";
+import SearchInputField from "../../components/SearchInputField";
+import { searchFilterLogic } from "../../utils/HelperFunctions";
 import { useTranslation } from "react-i18next";
-import { ICategory } from "../../../modules/category/types/interfaces";
-import CategoriesTableContainer from "../../../modules/category/components/CategoriesTableContainer";
+import { setBreadCrumbsData } from "../../store/redux/breadCrumbsData";
+import ListHeader from "../../components/ListHeader";
+import UsersTableContainer from "../../modules/user/components/UsersTableContainer";
+import { IUser } from "../../modules/user/types/interfaces";
+import TableSkeleton from "../../components/loaders/TableSkeleton";
 
-const Categories = () => {
-
+const Users = () => {
     const { t } = useTranslation()
     const [isPending, startTransition] = useTransition()
     const dispatch = useDispatch()
     dispatch(setBreadCrumbsData({
-        links: [{ label: "Dashboard", path: "/" }, { label: "Categories List", path: "/categories" }],
-        page_title: "Categories List",
+        links: [{ label: "Dashboard", path: "/" }, { label: "Users List", path: "/users" }],
+        page_title: "Users List",
     }))
 
     const [searchInput, setSearchInput] = useState("")
     const [refetch, setRefetch] = useState(false)
-    const [categories, setCategories] = useState<ICategory[]>([])
-    const [shownList, setShownList] = useState<ICategory[]>([])
+    const [users, setUsers] = useState<IUser[]>([])
+    const [shownList, setShownList] = useState<IUser[]>([])
     const { data, isSuccess, isLoading } = useQuery({
-        queryKey: ["Categories", refetch],
-        queryFn: () => generalGet("/category"),
+        queryKey: ["Users", refetch],
+        queryFn: () => generalGet("/user"),
         refetchOnWindowFocus: false
     });
 
     useEffect(() => {
         const reqData = data?.data.data.data
         if (isSuccess) {
-            const sortedCategories = reqData.sort((a: any, b: any) => {
+            const sortedData = reqData.sort((a: any, b: any) => b.isActive - a.isActive).sort((a: any, b: any) => {
                 const dateA = new Date(b.createdAt).getTime();
                 const dateB = new Date(a.createdAt).getTime();
                 return dateB + dateA; // Sort in descending order
             });
-            setCategories(sortedCategories);
+            setUsers(sortedData);
         }
 
     }, [isSuccess, data])
@@ -47,23 +46,24 @@ const Categories = () => {
     const tableHeaders = [
         { label: t("id") },
         { label: t("name") },
-        { label: t("slug") },
-        { label: "Published", customClass: "status_col" },
-        { label: t("actions"), customClass: "actions_col" }
+        { label: "Email"},
+        { label: "Mobile" },
+        { label: "Role" },
+        { label: "Active", customClass: "status_col" },
+        { label: "Verified", customClass: "status_col" }
     ];
 
     useEffect(() => {
-        setShownList(categories)
+        setShownList(users)
         if (searchInput) {
-            const results = searchFilterLogic({ searchInput: searchInput, listOfData: categories, keys: ["id", "name"] })
+            const results = searchFilterLogic({ searchInput: searchInput, listOfData: users, keys: ["id", "name"] })
             startTransition(()=>{
                 setShownList(results)
             })
         }
-    }, [categories, searchInput])
+    }, [users, searchInput])
 
     if (isLoading) return <TableSkeleton columns={6} withoutButton />
-
     return (
         <div className="services-page-container">
             <ListHeader>
@@ -71,15 +71,14 @@ const Categories = () => {
                     <SearchInputField placeholder={t("search_by_id_Name")} setSearchInput={setSearchInput} />
                 </div>
             </ListHeader>
-            <CategoriesTableContainer
+            <UsersTableContainer
                 tableHeaders={tableHeaders}
                 data={shownList}
-                noDataMessage={"No Categories found"}
+                noDataMessage={"No Users found"}
                 setRefetchData={setRefetch}
             />
         </div>
     );
-    
 }
 
-export default Categories;
+export default Users;
