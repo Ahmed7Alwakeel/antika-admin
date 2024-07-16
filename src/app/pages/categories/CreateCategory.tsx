@@ -8,7 +8,7 @@ const CreateCategory = () => {
     const {t}=useTranslation()
     const dispatch=useDispatch()
     dispatch(setBreadCrumbsData({
-        links: [{ label: "Dashboard", path: "/" },{label: "Create Category",path:"/categories/create-category"}],
+        links: [{ label: "Dashboard", path: "/" },{label: "Categories List",path:"/categories"},{label: "Create Category",path:"/categories/create-category"}],
 		page_title: "Create Category",
     }))
     

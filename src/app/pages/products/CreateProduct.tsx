@@ -8,7 +8,7 @@ const CreateProduct = () => {
     const {t}=useTranslation()
     const dispatch=useDispatch()
     dispatch(setBreadCrumbsData({
-        links: [{ label: "Dashboard", path: "/" },{label: "Create Product",path:"/products/create-product"}],
+        links: [{ label: "Dashboard", path: "/" },{label: "Products List",path:"/products"},{label: "Create Product",path:"/products/create-product"}],
 		page_title: "Create Product",
     }))
     
