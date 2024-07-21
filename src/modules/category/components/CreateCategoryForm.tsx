@@ -31,6 +31,12 @@ const CreateCategoryForm = () => {
         enabled: !!id,
     });
 
+    let { data:Dasd, isSuccess:dsadas, isLoading:dsadsa } = useQuery({
+        queryKey: ["product form", refetch, id],
+        queryFn: () => generalGet(`/category/${id}/products`),
+        enabled: !!id,
+    });
+
     useEffect(() => {
         setRefetch(true)
     }, [])
