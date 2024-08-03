@@ -1,4 +1,4 @@
-import { serviceIcon, UsersIcon } from "./variables";
+import { createIcon, distIcon, listIcon, serviceIcon, UsersIcon } from "./variables";
 
 export const categoryLinks = {
     header: "Categories",
@@ -24,6 +24,20 @@ export const categoryLinks = {
       },
       {
         label: "Create Product", link: "/products/create-product", icon: [serviceIcon],
+      },
+    ]
+  }
+
+  export const branchesLinks = {
+    header: "Branches",
+    baseRoute: "/branches",
+    headerIcon: [distIcon],
+    nestedLinks: [
+      {
+        label: "branches", link: "/branches", icon: [listIcon],
+      },
+      {
+        label: "Create branch", link: "/branches/create-branch", icon: [createIcon],
       },
     ]
   }

@@ -15,6 +15,8 @@ import CreateCategory from './pages/categories/CreateCategory';
 import Products from './pages/products/Products';
 import CreateProduct from './pages/products/CreateProduct';
 import Users from './pages/Users';
+import CreateBranch from './pages/branches/CreateBranch';
+import Branches from './pages/branches/Branches';
 
 const App: React.FC = () => {
   const { i18n } = useTranslation();
@@ -39,6 +41,9 @@ const App: React.FC = () => {
               <Route path="/products" element={<Products />} />
               <Route path="/products/create-product" element={<CreateProduct />} />
               <Route path="/products/create-product/:id" element={<CreateProduct />} />
+              <Route path="/branches" element={<Branches />} />
+              <Route path="/branches/create-branch" element={<CreateBranch />} />
+              <Route path="/branches/create-branch/:id" element={<CreateBranch />} />
               <Route path="/users" element={<Users />} />
               <Route path="/not-found" element={<NotFound />} />
             </Route>
