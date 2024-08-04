@@ -329,6 +329,19 @@
 			}
 		}
 	}
+	.add-time-button {
+		width: 100%;
+		padding: 1.5rem 0;
+		border: $border;
+		border-radius: 12px;
+		font-size: 0.9rem;
+		background-color: #e9e8eb;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+	  }
 }
 .date_range_input {
 	width: 100%;
@@ -479,4 +492,130 @@
 	display: flex;
 	align-items: center;
 	gap: 5px;
+}
+
+
+.field-array-container {
+	background: #fcfcfc;
+	border-radius: 12px;
+	margin-bottom: 2rem;
+	// overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	&.remove-margin {
+		margin-bottom: 0;
+	}
+	&.disabled{
+		opacity: 0.7;
+		// pointer-events: none;
+	}
+	.header-container {
+		padding: 1.5rem;
+		background-color: #211d33;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #fff;
+		cursor: pointer;
+		position: relative;
+		border-top-right-radius: 12px;
+		border-top-left-radius: 12px;
+		overflow: hidden;
+		transition: 0.25s all;
+		p {
+			font-weight: 500;
+			font-size: 0.85rem;
+			display: flex;
+			gap: 0.25rem;
+			align-items: center;
+		}
+		.MuiAccordionSummary-content {
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		&.expand {
+			border-radius: 12px;
+		}
+	}
+	.MuiPaper-root {
+		border-radius: 12px;
+		box-shadow: none;
+	}
+	.MuiAccordionDetails-root {
+		padding: 2.5rem 1.5rem 1.5rem;
+		background: #fcfcfc;
+		padding-bottom: 1rem;
+		border-radius: 12px;
+
+		input {
+			width: 100%;
+		}
+	}
+	.css-1elwnq4-MuiPaper-root-MuiAccordion-root:last-of-type {
+		border-radius: 12px;
+		box-shadow: none;
+	}
+	.field-wrapper-container {
+		padding-inline: 0.5rem;
+		.select-type {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5rem;
+			.type {
+				position: relative;
+				flex: .35;
+				.error {
+					width: 19rem !important;
+				}
+			}
+			.counter {
+				display: flex;
+				border: $border;
+				border-radius: $gray_bg;
+				overflow: hidden;
+				background-color: #fff;
+				width: fit-content;
+				margin-top: 1.5rem;
+				div {
+					height: 3.25rem;
+					font-weight: 700;
+					font-size: 0.875rem;
+					transition: 0.25s all;
+					min-width: 3rem;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					&.sign {
+						font-size: 1rem;
+						background-color: $gray_bg;
+						cursor: pointer;
+						user-select: none;
+						&.disabled {
+							cursor: unset;
+							&:hover {
+								color: #000;
+								background-color: $gray_bg;
+							}
+						}
+						&:hover {
+							color: #fff;
+							background-color: $gray_bg;
+						}
+					}
+					input {
+						padding-inline: 0;
+						font-family: "public-font";
+						font-weight: 600;
+						width: 4rem;
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+	&.no-margin {
+		margin-bottom: 0;
+	}
 }

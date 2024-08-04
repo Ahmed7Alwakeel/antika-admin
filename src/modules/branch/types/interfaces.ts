@@ -5,4 +5,6 @@ export interface IRestaurant {
 	estimatedDeliveryTime: string
 	created_at?: Date
 	published?: boolean
+	lat:string,
+	lng:string
 }

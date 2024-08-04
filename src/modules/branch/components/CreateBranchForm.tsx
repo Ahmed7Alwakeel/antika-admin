@@ -17,8 +17,6 @@ const CreateBranchForm = () => {
     const [loading, setLoading] = useState(false)
     const [loadingRes, setLoadingRes] = useState(true)
     const [branchData, setBranchData] = useState<IRestaurant | null>()
-    const [bannerImage, setBannerImage] = useState<string | null>()
-    const [cardImage, setCardImage] = useState<string | null>()
     const navigate = useNavigate()
     const [refetch, setRefetch] = useState(false)
 
@@ -46,7 +44,7 @@ const CreateBranchForm = () => {
     useEffect(() => {
         const reqData = data?.data.data.data
         if (isSuccess) {
-            setBranchData(reqData)
+            setBranchData({ ...reqData, lat: reqData?.startLocation?.coordinates[0], lng: reqData?.startLocation?.coordinates[0] })
             const timeOut = setTimeout(() => {
                 setLoadingRes(false)
             }, 2000)
@@ -61,6 +59,10 @@ const CreateBranchForm = () => {
     }, [id])
 
     const handleSubmit = (values: any) => {
+        values.startLocation = {
+            type: "Point",
+            coordinates: [values.lat, values.lng]
+        }
         let route = "/restaurant"
         if (id) route = `/restaurant/${id}`
         setLoading(true)
@@ -120,10 +122,14 @@ const CreateBranchForm = () => {
             city: Yup.string().required("required").matches(/^[A-Za-z]+$/, "Must be english letters").min(3, "Name is to short"),
             area: Yup.string().required("required"),
             estimatedDeliveryTime: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0'),
-            deliveryPrice: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0')
+            deliveryPrice: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0'),
+            lat: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0'),
+            lng: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0'),
         });
 
     const initialValues: IRestaurant = {
+        lat: branchData?.lat || "",
+        lng: branchData?.lng || "",
         city: branchData?.city || "",
         area: branchData?.area || "",
         estimatedDeliveryTime: branchData?.estimatedDeliveryTime || "",
@@ -185,6 +191,30 @@ const CreateBranchForm = () => {
                                     inputPlaceholder={"E.g "}
                                     inputError={formik.errors.deliveryPrice}
                                     inputTouched={formik.touched.deliveryPrice}
+                                    input
+                                    customPadding
+                                    border
+                                    type="number"
+                                />
+                            </div>
+                            <div className="inputs_group">
+                                <FieldWrapper
+                                    title={"Lat"}
+                                    inputName={`lat`}
+                                    inputPlaceholder={"E.g 30,09"}
+                                    inputError={formik?.errors?.lat}
+                                    inputTouched={formik.touched.lat}
+                                    input
+                                    customPadding
+                                    border
+                                    type="number"
+                                />
+                                <FieldWrapper
+                                    title={"Lng"}
+                                    inputName={`lng`}
+                                    inputPlaceholder={"E.g 31,65"}
+                                    inputError={formik.errors.lng}
+                                    inputTouched={formik.touched.lng}
                                     input
                                     customPadding
                                     border

@@ -12,8 +12,6 @@ import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 import Categories from './pages/categories/Categories';
 import CreateCategory from './pages/categories/CreateCategory';
-import Products from './pages/products/Products';
-import CreateProduct from './pages/products/CreateProduct';
 import Users from './pages/Users';
 import CreateBranch from './pages/branches/CreateBranch';
 import Branches from './pages/branches/Branches';
@@ -38,9 +36,6 @@ const App: React.FC = () => {
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/create-category" element={<CreateCategory />} />
               <Route path="/categories/create-category/:id" element={<CreateCategory />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/products/create-product" element={<CreateProduct />} />
-              <Route path="/products/create-product/:id" element={<CreateProduct />} />
               <Route path="/branches" element={<Branches />} />
               <Route path="/branches/create-branch" element={<CreateBranch />} />
               <Route path="/branches/create-branch/:id" element={<CreateBranch />} />

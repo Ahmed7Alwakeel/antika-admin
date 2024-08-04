@@ -3,7 +3,7 @@ import { axiosInstance } from "../config/axiosConfig"
 
 export const generalUpdate = async (props: any) => {
 	const { route, values } = props
-	const response = await axiosInstance.patch(route,values)
+	const response = await axiosInstance.patch(route, values)
 	return response
 }
 export const generalDelete = async (route: string) => {

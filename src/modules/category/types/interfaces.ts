@@ -1,3 +1,4 @@
+import { IProduct } from "../../product/types/interfaces"
 
 export interface ICategoryImage{
 		path: string,
@@ -11,4 +12,5 @@ export interface ICategory {
 	bannerImage?: string | ICategoryImage
 	cardImage?: string | ICategoryImage
 	published?: boolean
+	products:IProduct[]
 }
