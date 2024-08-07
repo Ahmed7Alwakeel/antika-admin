@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import InitialLoader from "../loaders/InitialLoader";
 import AdminPanelHeader from "./AdminPanelHeader";
 import SideMenu from "./sideMenu/SideMenu";
@@ -9,17 +9,18 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { setUserData, setUserToken } from "../../modules/auth/store/redux/authData";
+import Pusher from "pusher-js";
 
 const Layout = ({ children }: { children: ReactNode }) => {
 
     let { pathname } = useLocation();
-    const { userData } = useSelector((store: any) => store)
     const dispatch = useDispatch()
 
     useEffect(() => {
         if (Cookies.get("user_data")) dispatch(setUserData(JSON.parse(Cookies.get("user_data") as string)))
         if (Cookies.get("token")) dispatch(setUserToken(Cookies.get("token") as string))
     }, [])
+
 
     return (
         <main className="layout layout-with-loader">

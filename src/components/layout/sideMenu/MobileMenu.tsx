@@ -3,7 +3,8 @@ import gsap from "gsap";
 import { sideMenuOpenIcon, AboutIcon, ArticlesIcons, CategoriesIcon, ClubRegistrationIcons, ClubsListIcon, ContactLinksIcon, ContactUsIcon, ContactUsListIcon, CourtsIcon, NOCRegistrationIcons, NewsIcon, NewsletterListIcon, PlayersIcon, PlayersListIcon, SponsorsIcon, TeamsListIcon, TermsAndCondIcon, TournamentIcon, TournamentRequestsIcon, TournamentsIcon, UsersIcon, homeIcon, logo_flag_only, logo_label_only, settingsIcon, websiteIcon, CreateTournamentsIcon, ListTournamentsIcon, CalenderTournamentsIcon, Terms_Conditions } from "../../../config/variables";
 import ActiveSideMenuAccordionContextProvider from "../../../store/context/activeSideMenuAccordionContext";
 import TogglerNavLink from "./TogglerNavLink";
-import { categoryLinks, productLinks } from "../../../config/menuLinks";
+import { branchesLinks, categoryLinks, ordersLinks, productLinks, usersLinks } from "../../../config/menuLinks";
+import SingleNavLinks from "./SingleNavLinks";
 
 
 type NavLink = {
@@ -12,7 +13,7 @@ type NavLink = {
   icon?: JSX.Element;
 };
 
-const MobileMenu = ({openMenu,setMenu}:any) => {
+const MobileMenu = ({ openMenu, setMenu }: any) => {
   const [keepExpanded, setKeepExpanded] = useState<boolean>(true);
   const [hover, setHover] = useState<boolean>(false);
   const el = useRef<HTMLDivElement>(null);
@@ -80,8 +81,8 @@ const MobileMenu = ({openMenu,setMenu}:any) => {
   }, [reAnimate]);
 
   return (
-    <div className={`mobile-menu ${openMenu? "open":"close"}`}>
-       <div className="logo_expand_container">
+    <div className={`mobile-menu ${openMenu ? "open" : "close"}`}>
+      <div className="logo_expand_container">
         <div className="logo_container">
           <div className="flag_label">
             {logo_flag_only}
@@ -101,8 +102,10 @@ const MobileMenu = ({openMenu,setMenu}:any) => {
       </div>
       <ul className="nav_links">
         <ActiveSideMenuAccordionContextProvider>
-          <TogglerNavLink links={categoryLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu}/>
-          <TogglerNavLink links={productLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu}/>
+          <TogglerNavLink links={categoryLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu} />
+          <TogglerNavLink links={branchesLinks} reAnimate={reAnimate} customClass={"mobile-menu"} setMenu={setMenu} />
+          <SingleNavLinks links={ordersLinks} />
+          <SingleNavLinks links={usersLinks} />
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>

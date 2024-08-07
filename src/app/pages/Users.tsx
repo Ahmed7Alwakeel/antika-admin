@@ -31,7 +31,7 @@ const Users = () => {
     });
 
     useEffect(() => {
-        const reqData = data?.data.data.data
+        const reqData = data?.data.data
         if (isSuccess) {
             const sortedData = reqData.sort((a: any, b: any) => b.isActive - a.isActive).sort((a: any, b: any) => {
                 const dateA = new Date(b.createdAt).getTime();

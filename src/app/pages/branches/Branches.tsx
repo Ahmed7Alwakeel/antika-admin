@@ -31,7 +31,7 @@ const Branches = () => {
     });
 
     useEffect(() => {
-        const reqData = data?.data.data.data
+        const reqData = data?.data.data
         if (isSuccess) {
             const sortedCategories = reqData.sort((a: any, b: any) => b.published - a.published).sort((a: any, b: any) => {
                 const dateA = new Date(b.createdAt).getTime();

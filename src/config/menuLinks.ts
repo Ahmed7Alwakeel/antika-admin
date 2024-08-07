@@ -42,6 +42,14 @@ export const categoryLinks = {
     ]
   }
 
+  export const ordersLinks = {
+    header: "Orders",
+    baseRoute: "/orders",
+    headerIcon: [listIcon],
+
+    nestedLinks: { label: "Orders List", link: "/orders" }
+  }  
+
   export const usersLinks = {
     header: "Users",
     baseRoute: "/users",

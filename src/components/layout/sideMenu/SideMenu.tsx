@@ -4,7 +4,7 @@ import { sideMenuOpenIcon, CourtsIcon, NOCRegistrationIcons, NewsIcon, Newslette
 import ActiveSideMenuAccordionContextProvider from "../../../store/context/activeSideMenuAccordionContext";
 import TogglerNavLink from "./TogglerNavLink";
 import { useLocation } from "react-router-dom";
-import { productLinks, categoryLinks, usersLinks, branchesLinks } from "../../../config/menuLinks";
+import { productLinks, categoryLinks, usersLinks, branchesLinks, ordersLinks } from "../../../config/menuLinks";
 import SingleNavLinks from "./SingleNavLinks";
 
 const SideMenu = () => {
@@ -78,7 +78,7 @@ const SideMenu = () => {
 
   return (
     <div className={`sidemenu_wrapper ${expanded && "expanded"} ${(pathname == "/auth/login" || pathname == "/auth/forgot-password") && "hide_sidebar"}`} ref={el}
->
+    >
       <div className="logo_expand_container">
         <div className="logo_container">
           <div className="flag_label">
@@ -93,8 +93,8 @@ const SideMenu = () => {
         <ActiveSideMenuAccordionContextProvider>
           <TogglerNavLink key={"branchesLinks"} links={branchesLinks} />
           <TogglerNavLink key={"categoryLinks"} links={categoryLinks} />
-          {/* <TogglerNavLink key={"productLinks"} links={productLinks} /> */}
-          <SingleNavLinks links={usersLinks}/>
+          <SingleNavLinks key={"ordersLinks"} links={ordersLinks} />
+          <SingleNavLinks links={usersLinks} />
         </ActiveSideMenuAccordionContextProvider>
       </ul>
     </div>
