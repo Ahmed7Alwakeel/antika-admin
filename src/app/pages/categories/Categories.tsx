@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setBreadCrumbsData } from "../../../store/redux/breadCrumbsData";
-import { useEffect, useState, useTransition } from "react";
+import { useContext, useEffect, useState, useTransition } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { generalGet } from "../../../API/api";
 import TableSkeleton from "../../../components/loaders/TableSkeleton";
@@ -10,6 +10,7 @@ import { searchFilterLogic } from "../../../utils/HelperFunctions";
 import { useTranslation } from "react-i18next";
 import { ICategory } from "../../../modules/category/types/interfaces";
 import CategoriesTableContainer from "../../../modules/category/components/CategoriesTableContainer";
+import { authContext } from "../../../store/context/authContext";
 
 const Categories = () => {
 
@@ -25,7 +26,7 @@ const Categories = () => {
     const [refetch, setRefetch] = useState(false)
     const [categories, setCategories] = useState<ICategory[]>([])
     const [shownList, setShownList] = useState<ICategory[]>([])
-    const { data, isSuccess, isLoading } = useQuery({
+    const { data, isSuccess, isLoading,error } = useQuery({
         queryKey: ["Categories", refetch],
         queryFn: () => generalGet("/category"),
         refetchOnWindowFocus: false
@@ -61,6 +62,15 @@ const Categories = () => {
             })
         }
     }, [categories, searchInput])
+
+
+    const { catchError } = useContext(authContext)
+
+    useEffect(() => {
+        if (error) {
+            catchError(error)
+        }
+    }, [error])
 
     if (isLoading) return <TableSkeleton columns={6} withoutButton />
 

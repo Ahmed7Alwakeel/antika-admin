@@ -11,6 +11,7 @@ const UsersTableContainer = ({ tableHeaders, data, noDataMessage, setRefetchData
                 {data?.length > 0 ?
                     <>
                         {data?.map((item: any, index: number) => (
+                            item.role!="admin"&&
                             <div className="item has_logo" key={index}>
                                 <div className="column">{item?._id}</div>
                                 <div className="column capitalize">{item?.name || "-"}</div>

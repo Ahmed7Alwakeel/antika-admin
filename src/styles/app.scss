@@ -21,6 +21,8 @@
 @import "../styles/common/DragDropWrapper.scss";
 @import "../modules/category/styles/ServiceProviderHighlights.scss";
 @import "../modules/category/styles/ServiceProviderInfo.scss";
+@import "../modules/dashboard/styles/Dashboard.scss";
+@import "../modules/dashboard/styles/ChartData.scss";
 
 //Login
 @import "../modules/auth/styles/login.scss";
@@ -127,7 +129,9 @@ p {
 	// font-family: var(--saans_trial_regular);
 	font-family: var(--saans_trial_medium);
 }
-
+.clickable{
+	cursor: pointer;
+}
 body,
 input,
 textarea,

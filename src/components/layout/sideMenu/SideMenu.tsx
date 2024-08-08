@@ -3,12 +3,13 @@ import gsap from "gsap";
 import { sideMenuOpenIcon, CourtsIcon, NOCRegistrationIcons, NewsIcon, NewsletterListIcon, PlayersIcon, PlayersListIcon, SponsorsIcon, TeamsListIcon, TermsAndCondIcon, TournamentIcon, TournamentRequestsIcon, TournamentsIcon, UsersIcon, homeIcon, logo_flag_only, logo_label_only, logo } from "../../../config/variables";
 import ActiveSideMenuAccordionContextProvider from "../../../store/context/activeSideMenuAccordionContext";
 import TogglerNavLink from "./TogglerNavLink";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { productLinks, categoryLinks, usersLinks, branchesLinks, ordersLinks } from "../../../config/menuLinks";
 import SingleNavLinks from "./SingleNavLinks";
 
 const SideMenu = () => {
   const { pathname } = useLocation();
+  const navigate= useNavigate();
   const [expanded, setExpanded] = useState<boolean>(true);
   const [keepExpanded, setKeepExpanded] = useState<boolean>(true);
   const [hover, setHover] = useState<boolean>(false);
@@ -82,7 +83,7 @@ const SideMenu = () => {
       <div className="logo_expand_container">
         <div className="logo_container">
           <div className="flag_label">
-            <div className="flag_label">
+            <div className="flag_label clickable" onClick={()=>navigate("/") }>
               {logo}
             </div>
           </div>

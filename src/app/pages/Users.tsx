@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useEffect, useState, useTransition } from "react";
+import { useContext, useEffect, useState, useTransition } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { generalGet } from "../../API/api";
 import SearchInputField from "../../components/SearchInputField";
@@ -10,6 +10,7 @@ import ListHeader from "../../components/ListHeader";
 import UsersTableContainer from "../../modules/user/components/UsersTableContainer";
 import { IUser } from "../../modules/user/types/interfaces";
 import TableSkeleton from "../../components/loaders/TableSkeleton";
+import { authContext } from "../../store/context/authContext";
 
 const Users = () => {
     const { t } = useTranslation()
@@ -24,7 +25,7 @@ const Users = () => {
     const [refetch, setRefetch] = useState(false)
     const [users, setUsers] = useState<IUser[]>([])
     const [shownList, setShownList] = useState<IUser[]>([])
-    const { data, isSuccess, isLoading } = useQuery({
+    const { data, isSuccess, isLoading, error } = useQuery({
         queryKey: ["Users", refetch],
         queryFn: () => generalGet("/user"),
         refetchOnWindowFocus: false
@@ -46,7 +47,7 @@ const Users = () => {
     const tableHeaders = [
         { label: t("id") },
         { label: t("name") },
-        { label: "Email"},
+        { label: "Email" },
         { label: "Mobile" },
         { label: "Role" },
         { label: "Active", customClass: "status_col" },
@@ -57,11 +58,19 @@ const Users = () => {
         setShownList(users)
         if (searchInput) {
             const results = searchFilterLogic({ searchInput: searchInput, listOfData: users, keys: ["id", "name"] })
-            startTransition(()=>{
+            startTransition(() => {
                 setShownList(results)
             })
         }
     }, [users, searchInput])
+
+    const { catchError } = useContext(authContext)
+
+    useEffect(() => {
+        if (error) {
+            catchError(error)
+        }
+    }, [error])
 
     if (isLoading) return <TableSkeleton columns={6} withoutButton />
     return (

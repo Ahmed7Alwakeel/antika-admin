@@ -1,5 +1,4 @@
 import { useState } from "react";
-import DeleteModal from "../../../components/DeleteModal";
 import ModalContainer from "../../../components/ModalContainer";
 import UpdateOrderModal from "./UpdateOrderModal";
 
@@ -17,7 +16,7 @@ const OrderTableContainer = ({ tableHeaders, data, noDataMessage, setRefetchData
             <div className={`table_data ${(!data || data?.length == 0) && "no_data"}`}>
                 {data?.length > 0 ?
                     <>
-                        {data?.map((item: any, index: number) => (
+                        {data?.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()).map((item: any, index: number) => (
                             <div className="item has_logo clickable" key={index} onClick={() => setOpenModal({ id: item._id, selectedOption: item.status })}>
                                 <div className="column">{item?._id}</div>
                                 <div className="column">{item?.deliveryDetails.email || "-"}</div>
@@ -33,7 +32,7 @@ const OrderTableContainer = ({ tableHeaders, data, noDataMessage, setRefetchData
             </div>
             {openModal && (
                 <ModalContainer customClass="x-small">
-                    <UpdateOrderModal selectedOption={openModal.selectedOption} id={openModal.id} setRefetchData={setRefetchData} route={"/order"} successMsg={"Order status updated successfully"} openModal={openModal} setOpenModal={setOpenModal}/>
+                    <UpdateOrderModal selectedOption={openModal.selectedOption} id={openModal.id} setRefetchData={setRefetchData} route={"/order"} successMsg={"Order status updated successfully"} openModal={openModal} setOpenModal={setOpenModal} />
                 </ModalContainer>
             )}
         </div>

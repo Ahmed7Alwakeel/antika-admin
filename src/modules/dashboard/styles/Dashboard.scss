@@ -1,0 +1,81 @@
+.dashboard-page {
+  display: flex;
+  gap: 4rem;
+  position: relative;
+
+  h4 {
+    font-size: 1.25rem !important;
+  }
+
+  .graphs-container {
+    flex: 1.25;
+    overflow: hidden;
+
+  }
+
+  .monthly-actions-container {
+    .month-actions-container {
+      margin-bottom: 2rem;
+      .month-data {
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        margin-top: 2rem;
+
+        .month {
+          font-size: 0.8rem;
+          color: #fff;
+          background-color: #00bed6;
+          width: fit-content;
+          border-radius: 4px;
+          padding: 0.5rem 0.75rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .price {
+          padding-bottom: 0.75rem;
+          border-bottom: 1px solid rgba(33, 29, 51, 0.1);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.75rem;
+
+          .number {
+            font-size: 1.05rem;
+          }
+
+          &:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    flex: 0.6;
+  }
+
+  .report-tabs-wrapper {
+    .tabs-container {
+      display: flex;
+      margin: 1rem 0rem;
+      background-color: #ddd;
+      width: fit-content;
+      padding: 0.5rem;
+      border-radius: 8px;
+
+      li {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: 0.25s all;
+        font-size: .85rem;
+
+        &.active {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

@@ -20,7 +20,7 @@ const CreateBranchForm = () => {
     const navigate = useNavigate()
     const [refetch, setRefetch] = useState(false)
 
-    let { data, isSuccess, isLoading } = useQuery({
+    let { data, isSuccess, isLoading,error } = useQuery({
         queryKey: ["Branch form", refetch, id],
         queryFn: () => generalGet(`/restaurant/${id}`),
         enabled: !!id,
@@ -135,6 +135,15 @@ const CreateBranchForm = () => {
         estimatedDeliveryTime: branchData?.estimatedDeliveryTime || "",
         deliveryPrice: branchData?.deliveryPrice || "",
     };
+
+    const { catchError } = useContext(authContext)
+
+    useEffect(() => {
+        if (error) {
+            catchError(error)
+        }
+    }, [error])
+
     if (loadingRes || isLoading) return <FormSkeleton featuredSections={1} />
 
     return (

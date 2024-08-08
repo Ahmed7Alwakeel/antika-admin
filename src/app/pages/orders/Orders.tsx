@@ -21,7 +21,7 @@ const Orders = () => {
         page_title: "Orders List",
     }))
 
-    const { handleLogout } = useContext(authContext)
+    const { catchError } = useContext(authContext)
     const [searchInput, setSearchInput] = useState("")
     const [refetch, setRefetch] = useState(false)
     const [ordersData, setOrdersData] = useState<IUser[]>([])
@@ -63,7 +63,11 @@ const Orders = () => {
         }
     }, [ordersData, searchInput])
 
-    if (error) { handleLogout() }
+    useEffect(() => {
+        if (error) {
+            catchError(error)
+        }
+    }, [error])
 
     if (isLoading) return <TableSkeleton columns={6} withoutButton />
     return (
@@ -76,7 +80,7 @@ const Orders = () => {
             <OrderTableContainer
                 tableHeaders={tableHeaders}
                 data={shownList}
-                noDataMessage={"No Users found"}
+                noDataMessage={"No Orders found"}
                 setRefetchData={setRefetch}
             />
         </div>

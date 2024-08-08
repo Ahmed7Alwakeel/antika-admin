@@ -32,9 +32,10 @@ const UpdateOrderModal = ({ id, setOpenModal, openModal, setRefetchData, route, 
             return selected || { label: "", value: "", progressValue: 0 }; // Fallback to default state
         });
     }, [selectedOption]);
+    console.log(selectedOption, chosenStatus)
 
     function handleUpdate() {
-        if (selectedStatus.progressValue !== 100) {
+        if (selectedStatus.progressValue !== 100 && chosenStatus != "string") {
             setLoading(true);
             generalUpdate(
                 {

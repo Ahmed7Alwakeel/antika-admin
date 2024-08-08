@@ -22,7 +22,6 @@ const NotificationDropDown = ({ notification,setDropDownNot }: any) => {
                     </>
                 ) : (
                     <div className="no-notification-message">
-                        <p>No notifications</p>
                         <span>
                             You have no notifications right now
                         </span>
