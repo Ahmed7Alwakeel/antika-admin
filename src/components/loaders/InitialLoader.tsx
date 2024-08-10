@@ -28,7 +28,7 @@ const InitialLoader = () => {
     return (
         <div className="initial-loader" id="loader">
             <div className="loader-container">
-                <div className="spinner-loader"></div>
+                <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             </div>
         </div>
     );
