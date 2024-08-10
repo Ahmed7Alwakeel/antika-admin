@@ -9,7 +9,7 @@
 .table_container {
   width: 100%;
   background-color: white;
-  border-radius: 12px;
+  //border-radius: 12px;
   overflow-y: hidden;
   overflow-x: scroll;
   scrollbar-width: thin;
@@ -109,7 +109,7 @@
           div{
             width: 3rem;
             height: 3rem;
-            border-radius: 50%;
+            //border-radius: 50%;
             background-color: #000;
             position: relative;
             overflow: hidden;
@@ -213,7 +213,7 @@
         height: 1.5rem;
         background-color: red;
         margin: auto;
-        border-radius: 5px;
+        //border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;

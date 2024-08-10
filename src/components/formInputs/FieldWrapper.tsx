@@ -145,7 +145,7 @@ const FieldWrapper = (
             {showUnit && (
               <span className="fixed-place-holder">{unit}</span>
             )}
-            {!inputError && tick && (
+            {/* {!inputError && tick && (
               <div className="tick">
                 <svg
                   width="17"
@@ -160,7 +160,7 @@ const FieldWrapper = (
                   />
                 </svg>
               </div>
-            )}
+            )} */}
             {showMaxLengthHint &&
               <p className="max_length_hint">{remainingCharachters} / {maxLength} characters left</p>
             }
@@ -191,7 +191,7 @@ const FieldWrapper = (
               // }}
               disabled={disabled}
             />
-            {!inputError && tick && (
+            {/* {!inputError && tick && (
               <div className="tick">
                 <svg
                   width="17"
@@ -206,7 +206,7 @@ const FieldWrapper = (
                   />
                 </svg>
               </div>
-            )}
+            )} */}
             {/* <p className="error">
               <ErrorMessage name={inputName} />
             </p> */}

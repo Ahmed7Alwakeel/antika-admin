@@ -14,12 +14,12 @@
           // position: relative;
           width: 100%;
           .layout_content {
-            padding: $padding_inline;
+            // padding: $padding_inline;
             padding-bottom: 0;
             max-height: calc(100vh - 2 * $padding_inline);
             height: 100%;
             background-color: $gray_bg;
-            border-radius: $border_radius;
+            // //border-radius: $//border_radius;
             overflow-y: scroll;
             &.login_layout{
               position: relative;
@@ -34,7 +34,7 @@
               }
             }
             .content_container {
-              padding: 2rem 0;
+              padding: 2rem 1.5rem;
               .service_details_page{
                 display: flex;
                 flex-direction: column;
@@ -61,7 +61,7 @@
                     margin-top: -1rem;
                     margin-bottom: 1rem;
                     position: relative;
-                    border-radius: 6px;
+                    // //border-radius: 6px;
                     width: 100%;
                     background: #faa1a8;
                     padding: 0.25rem 1rem;
@@ -94,7 +94,7 @@
               .cms_page_content {
                 border: solid 1px #e5e5e5;
                 padding: 1.5rem;
-                border-radius: 15px;  
+                // //border-radius: 15px;  
                 margin-bottom: 2rem;
                 padding-bottom: 3rem;
                 &:last-of-type{
@@ -136,7 +136,7 @@
             color: #fff;
             width: 3.375rem;
             height: 3.375rem;
-            border-radius: 50%;
+            // //border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;

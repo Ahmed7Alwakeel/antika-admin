@@ -3,6 +3,9 @@
 	border-bottom: solid 1px rgba($color: #000, $alpha: 0.1);
 	position: relative;
 	padding-bottom: $padding_inline;
+	background-color: #000;
+	color: #fff !important;
+	padding-inline: 1.5rem;
 
 	.auth_page_header {
 		.logo_container {
@@ -68,9 +71,10 @@
 				.admin_data_drop_down {
 					position: absolute;
 					background-color: #fff;
+					color: #000 !important;
 					box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.1),
 						0 6px 16px rgba(0, 0, 0, 0.1), 0 9px 28px 8px rgba(0, 0, 0, 0.1);
-					border-radius: 8px;
+					//border-radius: 8px;
 					display: flex;
 					flex-direction: column;
 					top: 100%;
@@ -211,7 +215,7 @@
 				justify-content: center;
 				align-items: center;
 				color: #fff;
-				border-radius: 50%;
+				//border-radius: 50%;
 				position: absolute;
 				top: -1rem;
 				right: -0.5rem;
@@ -232,9 +236,10 @@
 		.notification-container {
 			position: absolute;
 			background-color: #fff;
+			color: #000 !important;
 			box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.1),
 				0 6px 16px rgba(0, 0, 0, 0.1), 0 9px 28px 8px rgba(0, 0, 0, 0.1);
-			border-radius: 8px;
+			// border-radius: 8px;
 			display: flex;
 			flex-direction: column;
 			top: calc(100% + 1rem);

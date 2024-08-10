@@ -47,8 +47,7 @@ const LoginForm = () => {
     return (
         <div className="login_form" >
             <TextContainer
-                title="Login"
-                desc="Welcome to Antika"
+                title="Welcome to Antika Admin"
             />
             <Formik validateOnMount
                 validationSchema={validationSchema}

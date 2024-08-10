@@ -34,7 +34,7 @@
 				align-items: center;
 				gap: 1rem;
 				color: #fff;
-				border-radius: $btns_border_radius;
+				//border-radius: $btns_//border_radius;
 				cursor: pointer;
 				transition: all ease-in-out 0.25s;
 				overflow: hidden;
@@ -101,14 +101,14 @@
 
 				.inner {
 					backdrop-filter: blur(20px);
-					border-radius: 1.5rem;
+					//border-radius: 1.5rem;
 					margin-top: 0.3rem;
 					padding: 0.4rem;
 					background: rgba(255, 255, 255, 0.20);
 
 					.item {
 						transition: all ease-in-out 0.25s;
-						border-radius: $btns_border_radius;
+						//border-radius: $btns_//border_radius;
 
 						&:not(:last-child) {
 							margin-bottom: 0.2rem;
@@ -233,7 +233,7 @@
 				height: 1.85rem;
 				align-items: center;
 				justify-content: center;
-				border-radius: 50%;
+				//border-radius: 50%;
 				background-color: rgba(255, 255, 255, 0.1);
 				cursor: pointer;
 

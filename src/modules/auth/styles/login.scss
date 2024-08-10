@@ -1,10 +1,12 @@
 .login_page_container {
 	display: flex;
 	overflow: hidden;
+	justify-content: center;
+	align-items: center;
 	&.authlayout {
 		height: 100%;
 		display: grid;
-		grid-template-columns: 1fr 1.22fr;
+		grid-template-columns: .5fr;
 		.login_container {
 			padding: 0 2rem;
 			display: flex;
@@ -29,7 +31,8 @@
 				}
 				.sign_text_container {
 					width: 70%;
-					margin-bottom: 2.5rem;
+					margin-bottom: 1.5rem;
+					text-align: center;
 					p {
 						margin-top: 0.7rem;
 						// font-size: 0.875rem;

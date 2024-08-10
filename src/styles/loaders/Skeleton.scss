@@ -1,54 +1,54 @@
 .skeleton{
   &_container-border{
-    border-radius: $border_radius;
+    // //border-radius: $//border_radius;
     border: $border;
     padding: 25px;
     margin-bottom: 20px;
   }
   &_text-box{
-    border-radius: $border_radius !important;
+    // //border-radius: $//border_radius !important;
     height: 170px;
     margin-bottom: 2rem;
   } 
   &_input{
-    border-radius: $btns_border_radius !important;
+    // //border-radius: $btns_//border_radius !important;
     height: 51px;
     margin-bottom: 2rem;
     width: 384px;
   } 
   &_input-title{
-    border-radius: $btns_border_radius !important;
+    // //border-radius: $btns_//border_radius !important;
     height: 24px;
     width: 100px;
     margin-bottom: 10px;
   } 
   &_table-text{
-    border-radius: $border_radius;
+    // //border-radius: $//border_radius;
     height: 13px;
     width: 60px;
     margin-bottom: 10px;
   } 
   &_title{
-    border-radius: $btns_border_radius !important;
+    // //border-radius: $btns_//border_radius !important;
     height: 30px;
     width: 300px;
     margin-bottom: 2rem;
   } 
   &_calendar_title {
-    border-radius: $btns_border_radius !important;
+    // //border-radius: $btns_//border_radius !important;
     height: 30px;
     width: 300px;
   }
   &_calendar_options {
-    border-radius: $btns_border_radius !important;
+    // //border-radius: $btns_//border_radius !important;
     height: 40px;
     width: 200px;
   }
   &_calendar_content {
-    border-radius: $border_radius;
+    // //border-radius: $//border_radius;
   }
   &_update_info{
-    border-radius: $border_radius !important;
+    //border-radius: $//border_radius !important;
     width: 320px;
     height: 150px;
     flex-shrink: 0;
@@ -58,7 +58,7 @@
     }
   }
   &_image{
-    border-radius: $border_radius !important;
+    //border-radius: $//border_radius !important;
     height: 206px;
     width: 100%;
     margin-bottom: 2rem;
@@ -75,7 +75,7 @@
     width: 100%;
   }
   &_button{
-    border-radius: $btns_border_radius !important;
+    //border-radius: $btns_//border_radius !important;
     width: 100px;
     height: 40px;
   }
@@ -87,7 +87,7 @@
   
   &_player-info-box{
     padding: 24px;
-    border-radius: $border_radius;
+    //border-radius: $//border_radius;
     background-color: white;
     border: $border;
     width: fit-content;
@@ -111,7 +111,7 @@
     padding: 12.5px;
     border: $border;
     margin-bottom: 20px;
-    border-radius: $border_radius;
+    //border-radius: $//border_radius;
     width: 700px;
   }
   &_tournaments-small-card{
@@ -120,7 +120,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: $border_radius;
+    //border-radius: $//border_radius;
     border: $border;
   }
   &_text-small{
@@ -134,7 +134,7 @@
 
   &_box{
     background-color: white;
-    border-radius: $border_radius;
+    //border-radius: $//border_radius;
     overflow: hidden;
   }
   &_box{
@@ -157,7 +157,7 @@
   &_teams_content {
     border: solid 1px #e5e5e5;
     padding: 1.5rem;
-    border-radius: 15px;
+    //border-radius: 15px;
     margin-bottom: 2rem;
     padding-bottom: 3rem;
   }
@@ -173,7 +173,7 @@
 }
   &_team_card {
     height: 10rem;
-    border-radius: $border_radius;
+    //border-radius: $//border_radius;
   }
 }
 
