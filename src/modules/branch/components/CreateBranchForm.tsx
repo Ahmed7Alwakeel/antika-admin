@@ -119,7 +119,7 @@ const CreateBranchForm = () => {
 
     const validationSchema =
         Yup.object({
-            city: Yup.string().required("required").matches(/^[A-Za-z]+$/, "Must be english letters").min(3, "Name is to short"),
+            city: Yup.string().required("required"),
             area: Yup.string().required("required"),
             estimatedDeliveryTime: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0'),
             deliveryPrice: Yup.number().typeError('Must be a number').min(0, 'Must be greater than or equal 0'),

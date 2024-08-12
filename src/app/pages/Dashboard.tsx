@@ -192,7 +192,7 @@ const Dashboard = () => {
             </div>
             <div className="monthly-actions-container">
                 {monthData && <MonthData monthData={monthData} />}
-                {productsOrdersData && <ProductsData productsData={productsOrdersData} />}
+                {productsOrdersData.length>0 && <ProductsData productsData={productsOrdersData} />}
             </div>
         </div>
     );
