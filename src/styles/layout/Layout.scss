@@ -1,6 +1,7 @@
 .layout {
     display: flex;
     background-color: #fff;
+    overflow: hidden;
     .layout_inner {
       background-color: $main_bg;
       min-height: 100vh;

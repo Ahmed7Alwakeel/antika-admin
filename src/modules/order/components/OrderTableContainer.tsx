@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ModalContainer from "../../../components/ModalContainer";
 import UpdateOrderModal from "./UpdateOrderModal";
+import moment from "moment";
 
 const OrderTableContainer = ({ tableHeaders, data, noDataMessage, setRefetchData }: any) => {
 
@@ -21,8 +22,14 @@ const OrderTableContainer = ({ tableHeaders, data, noDataMessage, setRefetchData
                                 <div className="column">{item?._id}</div>
                                 <div className="column">{item?.deliveryDetails.email || "-"}</div>
                                 <div className="column capitalize">{item?.deliveryDetails.branch || "-"}</div>
-                                <div className="column capitalize">{item?.status || "-"}</div>
-                                <div className="column capitalize">{(item.totalAmount || 0).toFixed(2)}</div>
+                                <div className="column capitalize">{(moment(item.createdAt).format('D-M-YYYY[T]HH:mm') || "-")}</div>
+                                {/* <div className="column capitalize">{item?.status || "-"}</div> */}
+
+                                <div className={`column status_col clickable capitalize`} 
+                                ><div className={`${item?.status == "delivered" ? "active" : "inProgress"}`}>{item?.status || "-"}</div></div>
+
+
+                                <div className="column capitalize text-center">{(item.totalAmount || 0).toFixed(2)}</div>
                             </div>
                         ))}
                     </>

@@ -49,8 +49,9 @@ const Orders = () => {
         { label: t("id") },
         { label: "Customer" },
         { label: "Branch" },
-        { label: "Status" },
-        { label: "Amount" },
+        { label: "Created at" },
+        { label: "Status", customClass: "status_col" },
+        { label: "Amount",customClass:"text-center"},
     ];
 
     useEffect(() => {
