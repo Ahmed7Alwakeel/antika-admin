@@ -46,9 +46,10 @@ export default function AuthProvider({ children }: prop) {
         setLoading && setLoading(false)
         toast.error(error?.response?.data?.message || t("somethingWrong"))
         handleLogout()
-      } else {
-        setLoading && setLoading(false)
-        toast.error(error?.response?.data?.message || t("somethingWrong"))
+        } else {
+          setLoading && setLoading(false)
+          toast.error(error?.response?.data?.message || t("somethingWrong"))
+          handleLogout()
       }
     }
   }

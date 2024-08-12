@@ -24,7 +24,7 @@ const AdminPanelHeader = () => {
   const [openMenu, setMenu] = useState<boolean>(false)
   const [dropDownNot, setDropDownNot] = useState<boolean>(false)
   const [notification, setNotification] = useState<any>([])
-  let [notificationCount, setNotificationCount] = useState(0);
+  let [notificationCount, setNotificationCount] = useState(1);
 
   let allMessages: any = [];
   

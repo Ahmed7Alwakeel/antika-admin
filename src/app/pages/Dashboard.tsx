@@ -169,30 +169,32 @@ const Dashboard = () => {
                     reportData={getYearlyReport(branchesOrdersData[Object.keys(branchesOrdersData)[0]], selectedTab == 1 ? "totalAmount" : "totalOrders")}
                 />
 
-                <div className="donut-charts-wrapper">
-                    <DonutChartData
-                        summary={branchesPerData}
-                        handleData={() => handleDonutChartData(branchesPerData, "amountPercentage")}
-                        shownData={branchesPerData}
-                        keys={["amountPercentage", "amount"]}
-                        title={'Branch revenue percentage'}
-                        desc={'Top branches revenue'}
-                    />
-                    <DonutChartData
-                        title={'Branch orders percentage'}
-                        desc={'Top branches orders'}
-                        keys={["orderPercentage", "orders"]}
-                        summary={branchesPerData}
-                        handleData={() => handleDonutChartData(branchesPerData, "orderPercentage")}
-                        shownData={branchesPerData}
-                    />
-                </div>
+                {branchesPerData.length > 0 &&
+                    <div className="donut-charts-wrapper">
+                        <DonutChartData
+                            summary={branchesPerData}
+                            handleData={() => handleDonutChartData(branchesPerData, "amountPercentage")}
+                            shownData={branchesPerData}
+                            keys={["amountPercentage", "amount"]}
+                            title={'Branch revenue percentage'}
+                            desc={'Top branches revenue'}
+                        />
+                        <DonutChartData
+                            title={'Branch orders percentage'}
+                            desc={'Top branches orders'}
+                            keys={["orderPercentage", "orders"]}
+                            summary={branchesPerData}
+                            handleData={() => handleDonutChartData(branchesPerData, "orderPercentage")}
+                            shownData={branchesPerData}
+                        />
+                    </div>
+                }
 
 
             </div>
             <div className="monthly-actions-container">
                 {monthData && <MonthData monthData={monthData} />}
-                {productsOrdersData.length>0 && <ProductsData productsData={productsOrdersData} />}
+                {productsOrdersData.length > 0 && <ProductsData productsData={productsOrdersData} />}
             </div>
         </div>
     );
