@@ -2,6 +2,7 @@
   "name": "antika-admin",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://antika-admin.onrender.com",
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/serialize": "^1.3.0",
