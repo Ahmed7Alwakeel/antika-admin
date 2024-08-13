@@ -31,8 +31,8 @@ const App: React.FC = () => {
       <Providers>
         <Layout>
           <Routes>
-            <Route path='/' element={<ProtectedRoutes />}>
-              <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path='' element={<ProtectedRoutes />}>
+              <Route path="" element={<Navigate to="/dashboard" />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/create-category" element={<CreateCategory />} />
