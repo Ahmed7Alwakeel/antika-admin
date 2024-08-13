@@ -18,7 +18,7 @@ const InitialLoader = () => {
             if (tl.current) {
                 tl.current.play();
             }
-        }, 1500);
+        }, 2500);
 
         return () => {
             clearTimeout(timeout);

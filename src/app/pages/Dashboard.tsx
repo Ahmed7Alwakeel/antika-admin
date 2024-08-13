@@ -26,7 +26,7 @@ const Dashboard = () => {
         queryKey: ["Month data"],
         queryFn: () => generalGet("/dashboard/monthly-orders"),
         refetchOnWindowFocus: false,
-        refetchInterval:10000
+        refetchInterval: 10000
     });
 
     const { data: branchesOrdersGraph,
@@ -142,69 +142,63 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-page">
-            {isLoading ?
-                <div className="spinner">
-                    <div className="loader"></div>
-                </div> :
-                <>
-                    <div className="graphs-container">
-                        <ReportTabs
-                            tabs={tabs}
-                            selectedTab={selectedTab}
-                            setSelectedTab={setSelectedTab}
-                            title='Branches Overview'
-                        />
-                        <ChartData
-                            stepSize={50}
-                            handleData={() =>
-                                handleMixedLineChartData(
-                                    Object.entries(branchesOrdersData).map(([branchName, monthlyData]) => {
-                                        return {
-                                            label: branchName,
-                                            data: getYearlyReport(monthlyData, selectedTab == 1 ? "totalAmount" : "totalOrders")
-                                        };
-                                    })
-                                )
-                            }
-                            desc={
-                                selectedTab == 0 ?
-                                    'Number of monthly orders for each branch.' :
-                                    'Number of monthly revenue for each branch.'
-
-                            }
-                            reportData={getYearlyReport(branchesOrdersData[Object.keys(branchesOrdersData)[0]], selectedTab == 1 ? "totalAmount" : "totalOrders")}
-                        />
-
-                        {branchesPerData.length > 0 &&
-                            <div className="donut-charts-wrapper">
-                                <DonutChartData
-                                    summary={branchesPerData}
-                                    handleData={() => handleDonutChartData(branchesPerData, "amountPercentage")}
-                                    shownData={branchesPerData}
-                                    keys={["amountPercentage", "amount"]}
-                                    title={'Branch revenue percentage'}
-                                    desc={'Top branches revenue'}
-                                />
-                                <DonutChartData
-                                    title={'Branch orders percentage'}
-                                    desc={'Top branches orders'}
-                                    keys={["orderPercentage", "orders"]}
-                                    summary={branchesPerData}
-                                    handleData={() => handleDonutChartData(branchesPerData, "orderPercentage")}
-                                    shownData={branchesPerData}
-                                />
-                            </div>
+            <>
+                <div className="graphs-container">
+                    <ReportTabs
+                        tabs={tabs}
+                        selectedTab={selectedTab}
+                        setSelectedTab={setSelectedTab}
+                        title='Branches Overview'
+                    />
+                    <ChartData
+                        stepSize={50}
+                        handleData={() =>
+                            handleMixedLineChartData(
+                                Object.entries(branchesOrdersData).map(([branchName, monthlyData]) => {
+                                    return {
+                                        label: branchName,
+                                        data: getYearlyReport(monthlyData, selectedTab == 1 ? "totalAmount" : "totalOrders")
+                                    };
+                                })
+                            )
                         }
+                        desc={
+                            selectedTab == 0 ?
+                                'Number of monthly orders for each branch.' :
+                                'Number of monthly revenue for each branch.'
+
+                        }
+                        reportData={getYearlyReport(branchesOrdersData[Object.keys(branchesOrdersData)[0]], selectedTab == 1 ? "totalAmount" : "totalOrders")}
+                    />
+
+                    {branchesPerData.length > 0 &&
+                        <div className="donut-charts-wrapper">
+                            <DonutChartData
+                                summary={branchesPerData}
+                                handleData={() => handleDonutChartData(branchesPerData, "amountPercentage")}
+                                shownData={branchesPerData}
+                                keys={["amountPercentage", "amount"]}
+                                title={'Branch revenue percentage'}
+                                desc={'Top branches revenue'}
+                            />
+                            <DonutChartData
+                                title={'Branch orders percentage'}
+                                desc={'Top branches orders'}
+                                keys={["orderPercentage", "orders"]}
+                                summary={branchesPerData}
+                                handleData={() => handleDonutChartData(branchesPerData, "orderPercentage")}
+                                shownData={branchesPerData}
+                            />
+                        </div>
+                    }
 
 
-                    </div>
-                    <div className="monthly-actions-container">
-                        {monthData && <MonthData monthData={monthData} />}
-                        {productsOrdersData.length > 0 && <ProductsData productsData={productsOrdersData} />}
-                    </div>
-                </>
-            }
-
+                </div>
+                <div className="monthly-actions-container">
+                    {monthData && <MonthData monthData={monthData} />}
+                    {productsOrdersData.length > 0 && <ProductsData productsData={productsOrdersData} />}
+                </div>
+            </>
         </div>
     );
 }
