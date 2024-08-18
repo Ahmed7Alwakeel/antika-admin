@@ -26,7 +26,7 @@ const Dashboard = () => {
         queryKey: ["Month data"],
         queryFn: () => generalGet("/dashboard/monthly-orders"),
         refetchOnWindowFocus: false,
-        refetchInterval: 10000
+        refetchInterval: 5000
     });
 
     const { data: branchesOrdersGraph,
